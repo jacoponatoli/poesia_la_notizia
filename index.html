@@ -1,0 +1,1021 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>Poesia la notizia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#000; --ink:#ece8df; --soft:#8c887f; --rule:#2b2b2b;
+  --red:#ff5d6c; --blue:#93a6ff; --hl:#1c1f2b;
+  --serif:"EB Garamond","Garamond","Adobe Garamond Pro","Palatino Linotype",Georgia,serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+html{ scroll-padding-top:env(safe-area-inset-top,0px); background:var(--bg); }
+*,*::before,*::after{ box-sizing:inherit; }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:var(--serif); font-size:1.1rem; -webkit-font-smoothing:antialiased; }
+.wrap{ max-width:50rem; margin:0 auto; padding:1.75rem clamp(1.1rem,5vw,3rem) 3rem; }
+
+h1{ margin:0 0 1.4rem; font-weight:400; font-size:clamp(1.9rem,6vw,3.4rem); letter-spacing:.12em; line-height:1.05; }
+
+.controls{ display:flex; flex-wrap:wrap; gap:.7rem 1.2rem; align-items:center; padding-bottom:1.1rem; border-bottom:1px solid var(--rule); }
+.select{ position:relative; }
+.select select{
+  appearance:none; -webkit-appearance:none; font:inherit; font-size:1.15rem; color:var(--ink);
+  background:transparent; border:0; border-bottom:1px solid var(--ink); border-radius:0;
+  padding:.25rem 1.6rem .25rem 0; cursor:pointer; max-width:16rem;
+}
+.select::after{ content:""; position:absolute; right:.25rem; top:50%; width:.42rem; height:.42rem; border-right:1px solid var(--ink); border-bottom:1px solid var(--ink); transform:translateY(-70%) rotate(45deg); pointer-events:none; }
+.select select option{ color:#000; background:#fff; }
+.btn{ font:inherit; font-size:1.1rem; color:var(--bg); background:var(--ink); border:0; border-radius:2px; padding:.35rem 1.1rem .4rem; cursor:pointer; }
+.btn:active{ transform:translateY(1px); }
+.toggles{ display:flex; gap:.7rem 1.2rem; }
+.toggle{ display:inline-flex; align-items:center; gap:.4rem; color:var(--soft); cursor:pointer; user-select:none; }
+.toggle input{ accent-color:var(--red); width:1rem; height:1rem; margin:0; }
+.link{ font:inherit; color:var(--ink); background:none; border:0; padding:.2rem 0; cursor:pointer; text-decoration:underline; text-decoration-color:var(--soft); text-underline-offset:4px; }
+.link:hover{ text-decoration-color:var(--ink); }
+:focus-visible{ outline:1px solid var(--blue); outline-offset:3px; }
+
+main{ padding-top:clamp(2.2rem,7vw,4.5rem); }
+.scheme{ display:none; margin:0 0 1.6rem; color:var(--blue); font-style:italic; }
+.metric-on .scheme{ display:block; }
+.poem{ max-width:40rem; font-size:clamp(1.3rem,3vw,2.05rem); line-height:1.38; }
+.stanza{ margin:0 0 1.1em; }
+.v{ display:grid; grid-template-columns:minmax(0,1fr); opacity:0; animation:in .6s ease forwards; }
+.v .n, .v .r{ display:none; }
+.metric-on .v{ grid-template-columns:2.2rem minmax(0,1fr) 1.8rem; column-gap:.6rem; align-items:baseline; }
+.metric-on .v .n, .metric-on .v .r{ display:block; }
+.v .n{ font-size:.55em; color:var(--red); text-align:right; font-variant-numeric:tabular-nums lining-nums; }
+.v .r{ font-style:italic; color:var(--blue); font-size:.8em; }
+.v .t{ padding-left:1.1em; text-indent:-1.1em; }
+.v.x{ margin:.25em 0; }
+.v.x .t{ font-style:italic; color:var(--soft); font-size:.8em; line-height:1.5; }
+.v.x .t :lang(ja), .v.x .t :lang(zh), .v.x .t :lang(ko), .v.x .t :lang(ar), .v.x .t :lang(hi){ font-style:normal; }
+.f{ cursor:help; border-radius:2px; transition:background-color .15s; }
+.f + .f::before{ content:" "; }
+.metric-on .f + .f::before{ content:" / "; color:var(--red); font-size:.6em; vertical-align:.2em; }
+.f.on{ background:var(--hl); }
+@keyframes in{ to{ opacity:1; } }
+@media (prefers-reduced-motion: reduce){ .v{ animation:none; opacity:1; } }
+
+.actions{ display:flex; flex-wrap:wrap; gap:.4rem 1.6rem; margin-top:1.4rem; }
+.prov{ min-height:3rem; margin-top:1rem; color:var(--soft); max-width:40rem; line-height:1.45; }
+.ptitle{ margin:0 0 1.4rem; font-style:italic; font-size:clamp(1.5rem,3.4vw,2.3rem); line-height:1.2; }
+.ptitle:empty{ display:none; }
+.prov b{ color:var(--ink); font-weight:500; }
+
+.about{ margin-top:4.5rem; padding-top:1.2rem; border-top:1px solid var(--rule); max-width:38rem; line-height:1.55; }
+.about summary{ display:inline-block; list-style:none; cursor:pointer; font-size:1.1rem; letter-spacing:.14em; padding:.2rem 0; }
+.about summary::-webkit-details-marker{ display:none; }
+.about summary::after{ content:" +"; color:var(--soft); letter-spacing:0; }
+.about[open] summary::after{ content:" \2212"; }
+.about[open] summary{ margin-bottom:.8rem; }
+.about p{ margin:0 0 .9rem; }
+.about .meta{ color:var(--soft); font-size:.98rem; }
+.dot{ display:inline-block; width:.45rem; height:.45rem; border-radius:50%; background:var(--soft); margin-right:.45rem; vertical-align:.12em; }
+.dot.live{ background:var(--red); }
+
+@media (max-width:600px){
+  .wrap{ padding:1.1rem 1.1rem 2.5rem; }
+  h1{ font-size:clamp(1.3rem,7.4vw,2.4rem); letter-spacing:.07em; margin-bottom:1.1rem; white-space:nowrap; }
+  .controls{ display:grid; grid-template-columns:minmax(0,1fr) auto; gap:.8rem 1rem; }
+  .select select{ max-width:none; width:100%; font-size:1.1rem; padding:.45rem 1.6rem .45rem 0; }
+  .btn{ padding:.55rem 1.2rem; }
+  .toggles{ grid-column:1 / -1; display:flex; gap:1.6rem; }
+  .toggle{ min-height:44px; }
+  .toggle input{ width:1.15rem; height:1.15rem; }
+  main{ padding-top:1.8rem; }
+  .poem{ font-size:clamp(1.05rem,5vw,1.35rem); line-height:1.42; }
+  .ptitle{ font-size:1.45rem; }
+  .metric-on .v{ grid-template-columns:1.3rem minmax(0,1fr) 1rem; column-gap:.35rem; }
+  .v .n{ font-size:.62em; }
+  .actions{ gap:0 1.8rem; }
+  .actions .link{ min-height:44px; }
+  .prov{ position:fixed; left:0; right:0; bottom:0; z-index:5; min-height:0; margin:0;
+    padding:.8rem 1.1rem calc(.9rem + env(safe-area-inset-bottom,0px)); background:#111; border-top:1px solid var(--rule);
+    font-size:.98rem; transform:translateY(105%); transition:transform .2s ease; max-width:none; }
+  .prov.show{ transform:none; }
+  .about summary{ min-height:44px; display:inline-flex; align-items:center; }
+}
+@media (hover:none){ .f{ cursor:pointer; } }
+</style>
+</head>
+<body>
+<div class="wrap" id="root">
+<h1>POESIA LA NOTIZIA</h1>
+<div class="controls">
+  <label class="select" aria-label="Forma poetica"><select id="form"></select></label>
+  <button class="btn" id="go">Componi</button>
+  <div class="toggles">
+    <label class="toggle"><input type="checkbox" id="metric"> metrica</label>
+    <label class="toggle"><input type="checkbox" id="auto"> automatico</label>
+  </div>
+</div>
+<main>
+  <p class="scheme" id="pscheme"></p>
+  <p class="ptitle" id="ptitle"></p>
+  <div class="poem" id="poem" aria-live="polite"></div>
+  <div class="actions">
+    <button class="link" id="copy">Copia testo</button>
+    <button class="link" id="img">Copia immagine</button>
+  </div>
+  <div class="prov" id="prov"></div>
+</main>
+<details class="about">
+  <summary>ABOUT</summary>
+  <p>Poesia la notizia prende i titoli dei quotidiani italiani della giornata e li rimonta dentro le forme chiuse della tradizione: sonetto, canzone, ballata, sestina, ottava. Un programma conta le sillabe, cerca le rime e taglia i titoli dove il metro lo chiede. A volte un verso è quasi un titolo intero, a volte è l'innesto di due notizie che non si erano mai incontrate.</p>
+  <p>Ogni volta che premi Componi nasce una poesia diversa, che non verrà ripetuta. La cronaca, fatta per durare un giorno, entra in misure pensate per durare secoli.</p>
+  <p>Anche la stampa estera entra nei versi, tradotta in italiano. Molto di rado affiora invece un titolo nella sua lingua originale, lasciato fuori dal metro: un inserto, come un ritaglio incollato sulla pagina.</p>
+  <p class="meta">Il conteggio metrico è automatico e approssimato. Passando sopra un frammento si vede il titolo da cui proviene.</p>
+  <p class="meta" id="status"><span class="dot"></span>Caricamento delle notizie</p>
+  <p class="meta" id="sources"></p>
+  <p>Un progetto di Jacopo Natoli</p>
+</details>
+</div>
+<script>
+const SNAPSHOT_DATE = "6 ottobre 2026";
+const RS = "Prime pagine del 6 ottobre";
+const SNAPSHOT = [
+["Corriere della Sera","Crisi in Spagna, Sánchez porta il paese al voto"],
+["Corriere della Sera","Il premier si dimette dopo le proteste sulla casa"],
+["Corriere della Sera","Gli 007 tedeschi parlano di una guerra ombra con Mosca"],
+["Corriere della Sera","La fiducia sulla legge elettorale alla prova"],
+["Corriere della Sera","La Rai sospende Ranucci per dieci giorni"],
+["Corriere della Sera","Garlasco, l'Arma promette che chi ha sbagliato pagherà"],
+["Corriere della Sera","Muore una scienziata in un laboratorio della peste in Siberia"],
+["la Repubblica","Case e salari, l'emergenza che nessuno ricorda"],
+["la Repubblica","Affitti e mutui si mangiano metà del reddito delle famiglie"],
+["la Repubblica","Sánchez sfida la destra portando la piazza alle urne"],
+["la Repubblica","L'onda nera di Bolsonaro e la rimonta impossibile di Lula"],
+["la Repubblica","Truppe estoni schierate al confine con la Russia"],
+["la Repubblica","Guadagnino racconta il suo film che spaventa i padroni dell'intelligenza artificiale"],
+["la Repubblica","La notte del Ris tra perizie fantasma e prove distrutte"],
+["La Stampa","Tasse e prezzi, le famiglie lanciano l'allarme"],
+["La Stampa","La pressione fiscale sale e volano gli affitti"],
+["La Stampa","Il premier spagnolo punta sulla protesta per ribaltare i sondaggi"],
+["La Stampa","Orrore a Pinerolo, studente disabile ustionato da un compagno"],
+["La Stampa","L'Italia travolge la Turchia di Montella"],
+[RS,"Nuove indagini sui pedali della bici di Stasi"],
+[RS,"Il governo mette la fiducia sulla legge elettorale"],
+[RS,"Buonfiglio lascia la Federcalcio nelle mani di Malagò"],
+["La Gazzetta dello Sport","Bella forza, l'Italia ne fa tre alla Turchia"],
+["La Gazzetta dello Sport","A novembre comincia la caccia ai quarti"],
+["La Gazzetta dello Sport","Il presidente succede a sé stesso come commissario"],
+["La Gazzetta dello Sport","Le rose della serie A valgono miliardi"],
+["La Gazzetta dello Sport","Sinner potrebbe tornare soltanto nel nuovo anno"],
+["Corriere dello Sport","La gioia è doppia per gli azzurri"],
+["Corriere dello Sport","Mancini dice che ora ce la giochiamo"],
+["Corriere dello Sport","Gli azzurrini volano agli Europei"],
+["Corriere dello Sport","Conte fa sognare i tifosi della Juventus"],
+["Tuttosport","Festival d'Italia contro la Turchia"],
+["Tuttosport","L'Under 21 vola agli Europei con sei gol"],
+["Tuttosport","Soluzione all'italiana per la Federcalcio"],
+["Tuttosport","Mandragora dà appuntamento a novembre"],
+[RS,"La guerra costa a Kiev milioni ogni giorno"],
+[RS,"La Germania evoca lo scontro con Mosca"],
+[RS,"L'Estonia sposta l'esercito ai confini e costruisce basi"],
+[RS,"Fratelli d'Italia vuole votare a fine primavera"],
+[RS,"Ranucci rischia di saltare l'inizio di Report"],
+[RS,"Il grande scandalo della prova distrutta"],
+[RS,"L'impronta trentatré sparita dai reperti"],
+[RS,"Popolari e Vox possono vincere in Spagna"],
+[RS,"Gualtieri dice di amare Roma"],
+[RS,"Il marchio di Meloni contro i falsi dell'intelligenza artificiale"],
+["Libero","Primo stop a Ranucci"],
+["Libero","La sinistra soffia sul fuoco della casa e delle scuole"],
+["Libero","Si vota a maggio, anzi no"],
+["Libero","La premier blinda la sua voce contro le imitazioni"],
+["Libero","Gerry Scotti batte il sermone di Benigni"],
+["Il Sole 24 Ore","Una banca dati contro l'evasione negli affitti brevi"],
+["Il Sole 24 Ore","Piazza Affari crede nell'offerta di Intesa su Mps"],
+["Il Sole 24 Ore","Cresce il debito nascosto delle grandi aziende tecnologiche"],
+["Il Sole 24 Ore","La Corte di Milano ferma gli altiforni dell'ex Ilva"],
+["Il Sole 24 Ore","Il Papa grida fino a quando"],
+["Il Sole 24 Ore","Cerimonie divise a tre anni dal massacro del sette ottobre"],
+["Il Foglio","Le vie incrociate di Israele e Ucraina"],
+["Il Foglio","La libertà non si difende a metà"],
+["Il Foglio","Gli italiani pagano più tasse e lo Stato paga più interessi"],
+["Il Foglio","Il tavolo di Pedro"],
+["Il Foglio","Con lui le partite non sono mai chiuse"],
+["il manifesto","Specie a rischio"],
+["il manifesto","Sánchez gioca l'ultima carta contro gli sfratti"],
+["il manifesto","In Brasile il primo turno va al figlio di Bolsonaro"],
+["il manifesto","Al voto con la fiducia e sotto sorveglianza"],
+["il manifesto","Il fisco record e la tassa nascosta"],
+["il manifesto","In Cisgiordania sessantamila attacchi in tre anni"],
+[RS,"Più povertà e più tasse secondo l'Istat"],
+[RS,"Il paese è più povero mentre il fisco cresce"],
+[RS,"Alta tensione sul reintegro di Ranucci"],
+[RS,"Il governo usa le leggi come bandiere"],
+[RS,"Sánchez si gioca la casa"],
+[RS,"Il virus antisemita dilaga"],
+[RS,"E se il disordine diventasse energia"],
+[RS,"Sánchez si gioca tutto e la Spagna va al voto"],
+[RS,"Uccise Pamela a coltellate e ora chiede scusa"],
+[RS,"L'Italia si ripete e la Turchia cade ancora"],
+["Il Post","La Camera discute la riforma della legge elettorale"],
+["Il Post","L'Istat registra meno potere d'acquisto per gli italiani"],
+["Il Post","In Brasile si va al ballottaggio per la presidenza"],
+["Sky TG24","Muore a trentasei anni dopo un trapianto di cuore"],
+["Sky TG24","Daspo e divieti dopo gli scontri del derby di Torino"],
+["Sky TG24","Arrestati la moglie e il nuovo compagno per l'omicidio di luglio"],
+["Sky TG24","Violenza negli ospedali, due operatori su tre l'hanno vista"],
+["Sky TG24","In Francia oggi la mobilitazione nazionale dei giovani"],
+["Sky TG24","La legge di bilancio rischia di essere neutra"],
+["Sky TG24","Sempre più stanze singole in affitto nelle città universitarie"],
+["Sky TG24","Tornano gli sconti per gli abbonati Prime"],
+["Sky TG24","A Venezia le marine di tutto il mondo all'Arsenale"]
+];
+// stampa estera (testi riscritti a partire dalle notizie del giorno): [paese, lingua, testo, traduzione]
+const SNAPSHOT_FOREIGN = [
+["Spagna","es","Sánchez disuelve las Cortes y llama a las urnas en noviembre","Sánchez scioglie le Camere e chiama alle urne a novembre"],
+["Spagna","es","La vivienda, en el centro de la campaña","La casa al centro della campagna"],
+["Brasile","pt","A direita chega forte ao segundo turno","La destra arriva forte al ballottaggio"],
+["Brasile","pt","Lula tenta a virada","Lula tenta la rimonta"],
+["Francia","fr","Jeunes et syndicats dans la rue partout en France","Giovani e sindacati in piazza in tutta la Francia"],
+["Francia","fr","Journée de mobilisation nationale","Giornata di mobilitazione nazionale"],
+["Germania","de","Merz überraschend in Kiew","Merz a sorpresa a Kiev"],
+["Germania","de","Ehemaliger Geheimdienstchef unter Spionageverdacht festgenommen","Arrestato per spionaggio un ex capo dei servizi segreti"],
+["Germania","de","Die Dienste warnen vor einem Schattenkrieg mit Moskau","I servizi avvertono di una guerra ombra con Mosca"],
+["Russia","ru","Смерть в сибирской лаборатории чумы","Morte in un laboratorio siberiano della peste"],
+["Stati Uniti","en","Third aircraft carrier heads to the Middle East","Una terza portaerei verso il Medio Oriente"],
+["Stati Uniti","en","Medical jet goes down near Boston","Un aereo sanitario precipita vicino a Boston"],
+["Stati Uniti","en","Ukraine says half of Russia's refining capacity is offline","Kiev dice che metà delle raffinerie russe è ferma"],
+["Regno Unito","en","Plans to close the Jerusalem consulate go ahead","Va avanti la chiusura del consolato a Gerusalemme"],
+["India","en","Nationwide protests over changes to voter lists","Proteste in tutto il paese contro le nuove liste elettorali"],
+["India","hi","मतदाता सूची के ख़िलाफ़ देशभर में प्रदर्शन","Manifestazioni in tutta la nazione contro le liste degli elettori"],
+["Arabia Saudita","ar","القوات اليمنية تطرد الحوثيين من مناطق قرب باب المندب","Le forze yemenite cacciano gli Houthi dalle coste del Mar Rosso"],
+["Turchia","tr","Milli takım İtalya karşısında yine kaybetti","La nazionale perde di nuovo contro l'Italia"],
+["Giappone","ja","米空母、中東へ","Una portaerei americana verso il Medio Oriente"],
+["Cina","zh","也门政府军收复红海沿岸多地","Le truppe del governo yemenita riprendono la costa"],
+["Corea del Sud","ko","스페인 총리, 11월 조기 총선 발표","Il premier spagnolo annuncia elezioni anticipate a novembre"],
+["Argentina","es","Buenos Aires despide a Messi","Buenos Aires saluta Messi"]
+];
+/* ---------- metrica italiana (approssimata) ---------- */
+const VOW = "aeiouàèéìíòóùú", STRONG = "aeoàèéìíòóùú", ACC = "àèéìíòóùú";
+const STOP = new Set(("ce glielo il lo la i gli le l un uno una di a ad da in con su per tra fra e ed o od che del dello della dei degli delle dell al allo alla ai agli alle all dal dallo dalla dai dagli dalle dall nel nello nella nei negli nelle nell sul sullo sulla sui sugli sulle sull col coi non si ci ne mi ti vi se ma come suo sua suoi sue loro chi cui questo questa quel quella sono ha hanno è").split(" "));
+const ART = new Set("il lo la i gli le un uno una l un'".split(" "));
+const PREP = new Set("di a ad da in con su per tra fra del dello della dei degli delle dell al allo alla ai agli alle all dal dallo dalla dai dagli dalle dall nel nello nella nei negli nelle nell sul sullo sulla sui sugli sulle sull col coi contro dopo verso sotto sopra senza davanti oltre dentro presso durante secondo".split(" "));
+const CONJ = new Set("e ed o ma che come mentre perché se quando dove né anche però".split(" "));
+function wtype(tok){
+  let t = tok.toLowerCase();
+  if (t.includes("'")){ const [a, b] = t.split("'"); if (/^h/.test(b || "")) return null; t = a; }
+  if (ART.has(t)) return "art";
+  if (PREP.has(t)) return "prep";
+  if (CONJ.has(t)) return "conj";
+  return null;
+}
+const deacc = s => s.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+const letters = w => w.toLowerCase().normalize("NFC").replace(/[^a-zàèéìíòóùú]/g, "");
+function nuclei(w){
+  const s = letters(w), out = [];
+  let i = 0;
+  while (i < s.length){
+    if (VOW.includes(s[i])){
+      let j = i; while (j < s.length && VOW.includes(s[j])) j++;
+      let found = false;
+      for (let k = i; k < j; k++) if (STRONG.includes(s[k])) { out.push(k); found = true; }
+      if (!found) out.push(j - 1);
+      i = j;
+    } else i++;
+  }
+  return out;
+}
+function wordInfo(w){
+  const s = letters(w), n = nuclei(w);
+  const syl = Math.max(1, n.length);
+  const accEnd = s.length > 0 && ACC.includes(s[s.length - 1]);
+  const tronco = accEnd || n.length <= 1;
+  let key;
+  if (!n.length) key = "!" + s;
+  else if (tronco) key = "!" + deacc(s.slice(n[n.length - 1]));
+  else key = deacc(s.slice(n[n.length - 2]));
+  const asso = key.startsWith("!") ? "!" + key.replace(/[^aeiou]/g, "") : key.replace(/[^aeiou]/g, "");
+  const first = w.toLowerCase().replace(/^[^a-zàèéìíòóùú]+/, "");
+  const sv = /^[aeiouàèéìíòóùú]/.test(first) || /^h(a|o|anno)$/.test(first);
+  const ev = VOW.includes(s[s.length - 1] || "x") && !accEnd;
+  return { s, syl, tronco, key, asso, sv, ev };
+}
+
+/* ---------- corpus ---------- */
+function buildCorpus(items, foreign = []){
+  // items: [{src, text}]
+  const lowerSeen = new Set();
+  const clauses = [];
+  items.forEach((it, hid) => {
+    const parts = it.text.replace(/[«»“”"„]/g, " ").split(/[:;?!.\u2013\u2014|]+|\s-\s/);
+    parts.forEach(p => {
+      let cur = [];
+      const flush = () => { if (cur.length) clauses.push({ hid, words: cur }); cur = []; };
+      p.split(/\s+/).forEach(raw => {
+        const t = raw.replace(/^[^\p{L}\d']+|[^\p{L}\d']+$/gu, "").replace(/^'+|'+$/g, "");
+        if (!t) return;
+        if (/\d/.test(t) || !/[aeiouàèéìíòóùú]/i.test(t)) { flush(); return; }
+        cur.push(t);
+      });
+      flush();
+    });
+  });
+  clauses.forEach(c => c.words.forEach((w, i) => { if (i > 0 && w === w.toLowerCase()) lowerSeen.add(w); }));
+  const windows = [];
+  clauses.forEach(c => {
+    const W = c.words.map((w, i) => {
+      let disp = w;
+      if (i === 0 && w[0] !== w[0].toLowerCase() && w.slice(1) === w.slice(1).toLowerCase()
+          && (lowerSeen.has(w.toLowerCase()) || STOP.has(w.toLowerCase()))) disp = w.toLowerCase();
+      return { w: disp, ...wordInfo(w) };
+    });
+    for (let i = 0; i < W.length; i++){
+      let raw = 0;
+      for (let j = i; j < W.length && j - i < 14; j++){
+        raw += W[j].syl;
+        if (j > i && W[j - 1].ev && W[j].sv) raw -= 1;
+        if (raw > 17) break;
+        const last = W[j];
+        windows.push({
+          hid: c.hid, text: W.slice(i, j + 1).map(x => x.w).join(" "),
+          raw, sv: W[i].sv, ev: last.ev, tr: last.tronco,
+          metric: raw + (last.tronco ? 1 : 0),
+          key: last.key, asso: last.asso, last: last.s,
+          bad: STOP.has(W[j].w.toLowerCase()) || wtype(W[j].w) !== null,
+          st: i === 0 ? "clause" : (wtype(W[i].w) || "mid"),
+          eok: j === W.length - 1 || wtype(W[j + 1].w) !== null,
+          nw: j - i + 1,
+          q: (i === 0 ? 3 : (STOP.has(W[i].w.toLowerCase()) ? 2 : 1)) * (j === W.length - 1 ? 3 : 1) * (items[c.hid].w ?? 1)
+        });
+      }
+    }
+  });
+  const ends = windows.filter(w => !w.bad && w.nw >= 1);
+  const byKey = {}, byAsso = {}, byWord = {}, byRaw = {};
+  ends.forEach(w => {
+    (byKey[w.key] ||= []).push(w);
+    (byAsso[w.asso] ||= []).push(w);
+    (byWord[w.last] ||= []).push(w);
+  });
+  windows.forEach(w => { const k = w.raw + (w.ev ? "v" : "c"); (byRaw[k] ||= []).push(w); });
+  // frammenti "grammaticali": iniziano a un confine di sintagma e finiscono prima di una parola funzionale
+  const openByRaw = {}, contByRaw = {}, contEff = {};
+  windows.forEach(w => {
+    w.g = w.st !== "mid" && w.eok && !w.bad && w.nw >= 2;
+    if (!w.g) return;
+    if (w.st === "clause" && w.nw >= 3) w.q *= 3;     // inizi di titolo con soggetto e verbo
+    if (w.st === "clause" || w.st === "art") (openByRaw[w.raw] ||= []).push(w);
+    if (w.st === "prep" || w.st === "conj"){
+      (contByRaw[w.raw] ||= []).push(w);
+      (contEff[(w.raw + (w.tr ? 1 : 0)) + "|" + (w.sv ? "v" : "c")] ||= []).push(w);
+    }
+  });
+  return { items, foreign, windows, ends, byKey, byAsso, byWord, byRaw, openByRaw, contByRaw, contEff };
+}
+
+/* ---------- forme ---------- */
+function parseScheme(str, ns = ""){
+  const out = [];
+  str.trim().split(/\s+/).forEach(t => {
+    if (t === "/") { out.push({ br: true }); return; }
+    const m = t.match(/^([A-Za-z-])(\d+)$/);
+    out.push({ g: m[1] === "-" ? null : ns + m[1].toLowerCase(), label: m[1] === "-" ? "" : m[1], L: +m[2] });
+  });
+  return out;
+}
+function canzone(){
+  const stanza = "a7 b7 C11 a7 b7 C11 c7 d7 e7 e7 D11 f7 F11";
+  let s = [];
+  for (let k = 0; k < 3; k++){ s = s.concat(parseScheme(stanza, "s" + k + ":")); s.push({ br: true }); }
+  return s.concat(parseScheme("-7 B11 B11", "k:"));
+}
+const FORMS_RAW = [
+  { id: "sonetto", name: "Sonetto", note: "ABBA ABBA CDE CDE", scheme: "A11 B11 B11 A11 / A11 B11 B11 A11 / C11 D11 E11 / C11 D11 E11" },
+  { id: "canzone", name: "Canzone", note: "abC abC cdeeDfF, tre stanze e congedo", build: canzone },
+  { id: "ballata", name: "Ballata", note: "ripresa XYY, stanze ABABBYY", scheme: "-11 Y11 Y11 / A11 B11 A11 B11 B11 Y11 Y11 / C11 D11 C11 D11 D11 Y11 Y11" },
+  { id: "madrigale", name: "Madrigale", note: "ABA BCB CC", scheme: "A11 B11 A11 / B11 C11 B11 / C11 C11" },
+  { id: "ottava", name: "Ottava rima", note: "ABABABCC", scheme: "A11 B11 A11 B11 A11 B11 C11 C11" },
+  { id: "terzarima", name: "Terza rima", note: "ABA BCB CDC DED E", scheme: "A11 B11 A11 / B11 C11 B11 / C11 D11 C11 / D11 E11 D11 / E11" },
+  { id: "sestina", name: "Sestina", note: "sei parole-rima in retrogradatio cruciata", sestina: true },
+  { id: "alternata", name: "Rima alternata", note: "ABAB CDCD EFEF", scheme: "A11 B11 A11 B11 / C11 D11 C11 D11 / E11 F11 E11 F11" },
+  { id: "baciata", name: "Rima baciata", note: "AABB CCDD EEFF", scheme: "A11 A11 B11 B11 / C11 C11 D11 D11 / E11 E11 F11 F11" },
+  { id: "incrociata", name: "Rima incrociata", note: "ABBA CDDC EFFE", scheme: "A11 B11 B11 A11 / C11 D11 D11 C11 / E11 F11 F11 E11" },
+  { id: "endecasillabo", name: "Endecasillabo", note: "un verso solo", scheme: "-11", frags: 3 },
+  { id: "sciolti", name: "Endecasillabi sciolti", note: "dodici versi senza rima", scheme: "-11 -11 -11 -11 -11 -11 -11 -11 -11 -11 -11 -11", frags: 3 },
+  { id: "settenari", name: "Settenari", note: "abab cdcd", scheme: "a7 b7 a7 b7 / c7 d7 c7 d7" },
+  { id: "haiku", name: "Haiku", note: "5 7 5", scheme: "-5 -7 -5", frags: 2 },
+  { id: "libero", name: "Verso libero", note: "nessuna misura", libero: true }
+];
+
+// dal più corto al più lungo (numero di versi, poi misura del verso)
+const FORM_ORDER = ["endecasillabo", "haiku", "settenari", "madrigale", "ottava", "libero", "sciolti", "alternata", "baciata", "incrociata", "terzarima", "sonetto", "ballata", "sestina", "canzone"];
+const FORMS = FORM_ORDER.map(id => FORMS_RAW.find(f => f.id === id));
+
+/* ---------- composizione ---------- */
+const rnd = a => a[Math.floor(Math.random() * a.length)];
+function rndW(a){ let t = 0; for (const x of a) t += x.q || 1; let r = Math.random() * t; for (const x of a){ r -= x.q || 1; if (r <= 0) return x; } return a[a.length - 1]; }
+function shuffle(a){ a = a.slice(); for (let i = a.length - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+
+/* montaggio di k frammenti da titoli diversi, a confini di sintagma, con misura esatta */
+function pickFrom(arr, ok){ const c = arr.filter(ok); return c.length ? rndW(c) : null; }
+function makeMontage(C, L, k, st, opt = {}){
+  const lastUsed = opt.lastUsed || new Set();
+  for (let t = 0; t < 160; t++){
+    const strict = t < 110;              // prima evita i titoli già usati nella poesia
+    const hids = new Set();
+    const okH = w => !hids.has(w.hid) && !st.used.has(w.text) && (!strict || !st.hids.has(w.hid));
+    const parts = [];
+    let raw = 0, prevEv = false, prevConj = false, fail = false;
+    for (let p = 0; p < k - 1; p++){
+      const room = L - raw - 2 * (k - 1 - p);        // lascia spazio ai frammenti successivi
+      if (room < 2){ fail = true; break; }
+      const r = 2 + Math.floor(Math.random() * (room - 1));
+      const src = p === 0 ? C.openByRaw : C.contByRaw;
+      const w = pickFrom(src[r] || [], x => okH(x) && !(prevConj && x.st === "conj"));
+      if (!w){ fail = true; break; }
+      raw += w.raw - (p > 0 && prevEv && w.sv ? 1 : 0);
+      prevEv = w.ev; prevConj = w.st === "conj"; hids.add(w.hid); parts.push(w);
+    }
+    if (fail) continue;
+    const n = L - raw;
+    if (n < 2) continue;
+    let finals;
+    if (opt.lastPool){
+      finals = opt.lastPool.filter(w => w.g && (w.st === "prep" || w.st === "conj") && !lastUsed.has(w.last)
+        && w.raw + (w.tr ? 1 : 0) - (prevEv && w.sv ? 1 : 0) === n);
+    } else {
+      finals = prevEv ? (C.contEff[(n + 1) + "|v"] || []).concat(C.contEff[n + "|c"] || [])
+                      : (C.contEff[n + "|v"] || []).concat(C.contEff[n + "|c"] || []);
+    }
+    const f = pickFrom(finals, x => okH(x) && !(prevConj && x.st === "conj") && !lastUsed.has(x.last));
+    if (!f) continue;
+    parts.push(f);
+    parts.forEach(x => { st.used.add(x.text); st.hids.add(x.hid); });
+    return { parts, metric: L, last: f.last };
+  }
+  return null;
+}
+
+function makeLine(C, L, pool, st, opt = {}){
+  const lastUsed = opt.lastUsed || new Set();
+  if (opt.frags){
+    for (let k = opt.frags; k >= 2; k--){ const m = makeMontage(C, L, k, st, { lastUsed }); if (m) return m; }
+  }
+  const lastPool = pool === C.ends ? null : pool;
+  if (Math.random() < 0.55){ const m = makeMontage(C, L, 2, st, { lastUsed, lastPool }); if (m) return m; }
+  const gsingles = pool.filter(w => w.g && w.st !== "conj" && w.metric === L && !lastUsed.has(w.last) && !st.used.has(w.text) && w.nw >= 2);
+  if (gsingles.length){ const w = rndW(gsingles); st.used.add(w.text); st.hids.add(w.hid); return { parts: [w], metric: L, last: w.last }; }
+  { const m = makeMontage(C, L, 2, st, { lastUsed, lastPool }); if (m) return m; }
+  if (opt.strict) return null;
+  return makeLineLoose(C, L, pool, st, opt);
+}
+
+function makeLineLoose(C, L, pool, st, opt = {}){
+  if (typeof LOOSE_COUNT !== 'undefined') LOOSE_COUNT.n++;
+  const lastUsed = opt.lastUsed || new Set();
+  const singles = pool.filter(w => w.metric === L && !lastUsed.has(w.last) && !st.used.has(w.text) && w.nw >= 2);
+  if (singles.length && (Math.random() < 0.6 || opt.preferSingle)) {
+    const w = rndW(singles); st.used.add(w.text); return { parts: [w], metric: L, last: w.last };
+  }
+  const endC = pool.filter(w => w.metric <= L - 2 && !lastUsed.has(w.last) && (opt.reuseEnds || !st.used.has(w.text)) && (opt.reuseEnds || (w.st !== "mid" && w.nw >= 2)));
+  for (let t = 0; t < 80 && endC.length; t++){
+    const E = rndW(endC);
+    const need = L - E.metric;
+    let heads = [];
+    if (E.sv) heads = (C.byRaw[(need + 1) + "v"] || []).concat(C.byRaw[need + "c"] || []);
+    else heads = (C.byRaw[need + "v"] || []).concat(C.byRaw[need + "c"] || []);
+    heads = heads.filter(h => h.hid !== E.hid && !st.used.has(h.text) && h.st !== "mid" && h.st !== "conj" && h.eok && !h.bad && h.nw >= 2);
+    if (!heads.length) continue;
+    const H = rndW(heads);
+    st.used.add(H.text); if (!opt.reuseEnds) st.used.add(E.text);
+    return { parts: [H, E], metric: L, last: E.last };
+  }
+  if (singles.length){ const w = rndW(singles); st.used.add(w.text); return { parts: [w], metric: L, last: w.last }; }
+  return null;
+}
+
+function fillGroup(C, slots, index, st, strict){
+  const need = slots.length;
+  const keys = shuffle(Object.keys(index).filter(k => !st.keys.has(k) && new Set(index[k].map(w => w.last)).size >= need));
+  for (const k of keys.slice(0, strict ? 120 : 300)){
+    const lastUsed = new Set(), res = [], snapshot = new Set(st.used), snapH = new Set(st.hids);
+    let ok = true;
+    for (const s of slots){
+      const line = makeLine(C, s.L, index[k], st, { lastUsed, strict });
+      if (!line){ ok = false; break; }
+      lastUsed.add(line.last); res.push(line);
+    }
+    if (ok){ st.keys.add(k); return res; }
+    st.used = snapshot; st.hids = snapH;
+  }
+  return null;
+}
+
+function composeCore(C, form){
+  const st = { used: new Set(), keys: new Set(), hids: new Set() };
+  if (form.libero) return composeLibero(C, st);
+  if (form.sestina) return composeSestina(C, st);
+  const slots = form.build ? form.build() : parseScheme(form.scheme);
+  const groups = {};
+  slots.forEach((s, i) => { if (!s.br && s.g) (groups[s.g] ||= []).push(i); });
+  const lines = new Array(slots.length).fill(null);
+  Object.keys(groups).sort((a, b) => groups[b].length - groups[a].length).forEach(g => {
+    const idx = groups[g], sl = idx.map(i => slots[i]);
+    let res = fillGroup(C, sl, C.byKey, st, true) || fillGroup(C, sl, C.byAsso, st, true)
+           || fillGroup(C, sl, C.byKey, st, false) || fillGroup(C, sl, C.byAsso, st, false);
+    if (res) res.forEach((r, n) => { lines[idx[n]] = r; });
+  });
+  return slots.map((s, i) => {
+    if (s.br) return { br: true };
+    const l = lines[i] || makeLine(C, s.L, C.ends, st, { frags: form.frags });
+    return l ? { ...l, label: lines[i] ? s.label : (s.label ? "·" : ""), L: s.L } : { parts: [], metric: 0, label: "", L: s.L };
+  });
+}
+
+function composeSestina(C, st){
+  const words = shuffle(Object.keys(C.byWord).filter(w => w.length >= 5 && C.byWord[w].length >= 2));
+  const six = [];
+  for (const w of words){ if (six.length === 6) break; if (six.every(x => wordInfo(x).key !== wordInfo(w).key)) six.push(w); }
+  if (six.length < 6) return composeCore(C, FORMS.find(f => f.id === "sonetto"));
+  let order = [0, 1, 2, 3, 4, 5];
+  const out = [];
+  for (let s = 0; s < 6; s++){
+    order.forEach(i => {
+      const l = makeLine(C, 11, C.byWord[six[i]], st, { reuseEnds: true });
+      out.push(l ? { ...l, label: String.fromCharCode(65 + i), L: 11 } : { parts: [], metric: 0, label: "", L: 11 });
+    });
+    out.push({ br: true });
+    order = [order[5], order[0], order[4], order[1], order[3], order[2]];
+  }
+  [1, 3, 5].forEach(i => {
+    const l = makeLine(C, 11, C.byWord[six[i]], st, { reuseEnds: true });
+    if (l) out.push({ ...l, label: String.fromCharCode(65 + i), L: 11 });
+  });
+  return out;
+}
+
+function composeLibero(C, st){
+  const out = [], n = 8 + Math.floor(Math.random() * 6);
+  const openAll = Object.values(C.openByRaw).flat(), contAll = Object.values(C.contByRaw).flat();
+  for (let i = 0; i < n; i++){
+    if (i > 1 && Math.random() < 0.2 && !out[out.length - 1].br) out.push({ br: true });
+    const k = Math.random() < 0.45 ? 3 : 2;
+    let line = null;
+    for (let t = 0; t < 120 && !line; t++){
+      const strict = t < 80, hids = new Set(), parts = [];
+      const ok = w => !hids.has(w.hid) && !st.used.has(w.text) && (!strict || !st.hids.has(w.hid)) && w.raw <= 9;
+      let prevConj = false, raw = 0, prevEv = false;
+      for (let p = 0; p < k; p++){
+        const w = pickFrom(p === 0 ? openAll : contAll, x => ok(x) && !(prevConj && x.st === "conj"));
+        if (!w) break;
+        raw += w.raw - (p > 0 && prevEv && w.sv ? 1 : 0);
+        prevEv = w.ev; prevConj = w.st === "conj"; hids.add(w.hid); parts.push(w);
+      }
+      if (parts.length === k && raw >= 6 && raw <= 18) line = parts;
+    }
+    if (!line) continue;
+    line.forEach(x => { st.used.add(x.text); st.hids.add(x.hid); });
+    const last = line[line.length - 1];
+    out.push({ parts: line, metric: line.reduce((s, x) => s + x.raw, 0) + (last.tr ? 1 : 0), label: "", L: 0 });
+  }
+  const tp = openAll.filter(w => w.nw >= 2 && w.nw <= 4 && w.st !== "prep" && !st.used.has(w.text) && !st.hids.has(w.hid));
+  const tpool = tp.length ? tp : openAll.filter(w => w.nw >= 2 && w.nw <= 4);
+  if (tpool.length){ const t = rndW(tpool); out.title = t.text.charAt(0).toUpperCase() + t.text.slice(1); }
+  return out;
+}
+
+/* ---------- inserti dalla stampa estera: rari, fuori metro, nella lingua originale ---------- */
+const FOREIGN_P = 0.08;   // inserto in lingua originale: circa una poesia su dodici
+const NOSPACE = /[\u3040-\u30ff\u3400-\u9fff\uac00-\ud7af]/;
+function foreignFragment(t){
+  t = t.replace(/\s+/g, " ").trim();
+  if (NOSPACE.test(t)) return t.length > 24 ? t.slice(0, 24).replace(/[、，,\s]+[^、，,\s]*$/, "") : t;
+  const first = t.split(/\s*[:;|–—]\s*/)[0];
+  let w = first.split(" ");
+  if (w.length > 12) w = w.slice(0, 10);
+  return w.join(" ");
+}
+function addForeign(poem, C, form){
+  if (!C.foreign || !C.foreign.length || Math.random() > FOREIGN_P) return poem;
+  const n = 1;
+  const used = new Set();
+  for (let k = 0; k < n; k++){
+    let it, tries = 0;
+    do { it = rndW(C.foreign); tries++; } while (used.has(it.country) && tries < 20);
+    used.add(it.country);
+    const line = { foreign: true, text: foreignFragment(it.text), it };
+    const slots = [];
+    poem.forEach((l, i) => { if (l.br) slots.push(i); });
+    slots.push(poem.length);
+    if (poem.length && !poem[0].br) slots.push(0);
+    const at = rnd(slots);
+    poem.splice(at, 0, line);
+  }
+  return poem;
+}
+function compose(C, form){
+  const p = composeCore(C, form);
+  const title = p.title;
+  addForeign(p, C, form);
+  if (title) p.title = title;
+  return p;
+}
+
+/* ---------- fonti dal vivo (attive quando la pagina è aperta fuori da claude.ai) ---------- */
+const LOCAL = 0.3;   // peso dei giornali locali: compaiono circa un terzo delle volte
+// [testata, feed RSS, dominio per la riserva su Google News, peso]
+// se il feed non risponde, la pagina cerca su Google News gli articoli delle ultime 48 ore di quel sito
+// (o, senza dominio, quelli firmati con il nome della testata)
+const IT_FEEDS = [
+  ["ANSA", "https://www.ansa.it/sito/notizie/topnews/topnews_rss.xml", "ansa.it"],
+  ["ANSA", "https://www.ansa.it/sito/notizie/politica/politica_rss.xml"],
+  ["ANSA", "https://www.ansa.it/sito/notizie/mondo/mondo_rss.xml"],
+  ["ANSA", "https://www.ansa.it/sito/notizie/cronaca/cronaca_rss.xml"],
+  ["ANSA", "https://www.ansa.it/sito/notizie/economia/economia_rss.xml"],
+  ["ANSA", "https://www.ansa.it/sito/notizie/cultura/cultura_rss.xml"],
+  ["Corriere della Sera", "https://xml2.corriereobjects.it/rss/homepage.xml", "corriere.it"],
+  ["Corriere della Sera", "https://xml2.corriereobjects.it/rss/politica.xml"],
+  ["Corriere della Sera", "https://xml2.corriereobjects.it/rss/esteri.xml"],
+  ["Corriere della Sera", "https://xml2.corriereobjects.it/rss/cronache.xml"],
+  ["Corriere della Sera", "https://xml2.corriereobjects.it/rss/cultura.xml"],
+  ["la Repubblica", "https://www.repubblica.it/rss/homepage/rss2.0.xml", "repubblica.it"],
+  ["la Repubblica", "https://www.repubblica.it/rss/politica/rss2.0.xml"],
+  ["la Repubblica", "https://www.repubblica.it/rss/esteri/rss2.0.xml"],
+  ["la Repubblica", "https://www.repubblica.it/rss/cronaca/rss2.0.xml"],
+  ["La Stampa", "https://www.lastampa.it/rss/copertina", "lastampa.it"],
+  ["Il Sole 24 Ore", "https://www.ilsole24ore.com/rss/italia.xml", "ilsole24ore.com"],
+  ["Il Sole 24 Ore", "https://www.ilsole24ore.com/rss/mondo.xml"],
+  ["Il Fatto Quotidiano", "https://www.ilfattoquotidiano.it/feed/", "ilfattoquotidiano.it"],
+  ["Il Post", "https://www.ilpost.it/feed/", "ilpost.it"],
+  ["Il Messaggero", "https://www.ilmessaggero.it/rss/home.xml", "ilmessaggero.it"],
+  ["Il Mattino", "https://www.ilmattino.it/rss/home.xml", "ilmattino.it"],
+  ["Il Resto del Carlino", "https://www.ilrestodelcarlino.it/rss", "ilrestodelcarlino.it"],
+  ["Il Giornale", "https://www.ilgiornale.it/feed.xml", "ilgiornale.it"],
+  ["Il Tempo", "https://www.iltempo.it/rss.jsp", "iltempo.it"],
+  ["Libero", "https://www.liberoquotidiano.it/rss.jsp", "liberoquotidiano.it"],
+  ["La Verità", "https://www.laverita.info/feeds/feed.rss", "laverita.info"],
+  ["Il Foglio", "https://www.ilfoglio.it/rss.jsp", "ilfoglio.it"],
+  ["il manifesto", "https://ilmanifesto.it/feed", "ilmanifesto.it"],
+  ["l'Unità", "https://www.unita.it/feed/", "unita.it"],
+  ["Avvenire", "https://www.avvenire.it/rss", "avvenire.it"],
+  ["ItaliaOggi", "https://www.italiaoggi.it/rss", "italiaoggi.it"],
+  ["Domani", "https://www.editorialedomani.it/rss", "editorialedomani.it"],
+  ["Il Riformista", "https://www.ilriformista.it/feed/", "ilriformista.it"],
+  ["Leggo", "https://www.leggo.it/rss/home.xml", "leggo.it"],
+  ["Avanti!", "https://www.avantionline.it/feed/", "avantionline.it"],
+  ["La Discussione", "https://www.ladiscussione.com/feed/", "ladiscussione.com"],
+  ["Secolo d'Italia", "https://www.secoloditalia.it/feed/", "secoloditalia.it"],
+  ["l'Occidentale", "https://loccidentale.it/feed/"],
+  ["Rivoluzione liberale", "https://www.rivoluzioneliberale.it/feed/"],
+  ["HuffPost Italia", "https://www.huffingtonpost.it/feeds/index.xml", "huffingtonpost.it"],
+  ["Internazionale", "https://www.internazionale.it/sitemaps/rss.xml", "internazionale.it"],
+  ["Rai News", "https://www.rainews.it/rss/tutti", "rainews.it"],
+  ["TGCom24", "https://www.tgcom24.mediaset.it/rss/homepage.xml", "tgcom24.mediaset.it"],
+  ["Sky TG24", "https://tg24.sky.it/rss/tg24.xml", "tg24.sky.it"],
+  ["Adnkronos", "https://www.adnkronos.com/RSS_PrimaPagina.xml", "adnkronos.com"],
+  ["AGI", "https://www.agi.it/cronaca/rss", "agi.it"],
+  ["Fanpage", "https://www.fanpage.it/feed/", "fanpage.it"],
+  ["Open", "https://www.open.online/feed/", "open.online"],
+  ["Today", "https://www.today.it/rss", "today.it"],
+  ["Wired Italia", "https://www.wired.it/feed/rss", "wired.it"],
+  ["La Gazzetta dello Sport", "https://www.gazzetta.it/rss/home.xml", "gazzetta.it"],
+  ["Corriere dello Sport", "https://www.corrieredellosport.it/rss", "corrieredellosport.it"],
+  ["Tuttosport", "https://www.tuttosport.com/rss", "tuttosport.com"],
+  ["Il Gazzettino", "https://www.ilgazzettino.it/rss/home.xml", "ilgazzettino.it", LOCAL],
+  ["Corriere Adriatico", "https://www.corriereadriatico.it/rss/home.xml", "corriereadriatico.it", LOCAL],
+  ["Quotidiano di Puglia", "https://www.quotidianodipuglia.it/rss/home.xml", "quotidianodipuglia.it", LOCAL],
+  ["Quotidiano.net", "https://www.quotidiano.net/rss", "quotidiano.net", LOCAL],
+  ["L'Unione Sarda", "https://www.unionesarda.it/rss", "unionesarda.it", LOCAL]
+];
+// Google News Italia: centinaia di testate in un colpo solo; le non nazionali pesano come locali
+const GN_TOPICS = ["", "NATION", "WORLD", "BUSINESS", "TECHNOLOGY", "ENTERTAINMENT", "SPORTS", "SCIENCE", "HEALTH"];
+const gnUrl = (ceid, topic = "") => {
+  const [gl, hl] = ceid.split(":");
+  return `https://news.google.com/rss${topic ? "/headlines/section/topic/" + topic : ""}?hl=${hl}&gl=${gl}&ceid=${ceid}`;
+};
+const NATIONAL = new Set(["ANSA", "Corriere della Sera", "la Repubblica", "La Repubblica", "La Stampa", "Il Sole 24 ORE", "Il Sole 24 Ore",
+  "Il Fatto Quotidiano", "Il Post", "Il Messaggero", "Il Mattino", "il Giornale", "Il Giornale", "Il Tempo", "Libero Quotidiano", "Libero",
+  "Il Foglio", "il manifesto", "Avvenire", "Domani", "Il Riformista", "HuffPost Italia", "Internazionale", "Rai News", "RaiNews", "TGCOM24",
+  "Tgcom24", "Sky TG24", "Adnkronos", "Agenzia Nova", "AGI", "Fanpage.it", "Open", "Today.it", "Wired Italia", "La Gazzetta dello Sport",
+  "Gazzetta", "Corriere dello Sport", "Tuttosport", "Il Riformista", "La Verità", "ItaliaOggi", "Milano Finanza", "QuiFinanza", "Euronews Italiano",
+  "Il Quotidiano Italiano", "Panorama", "L'Espresso", "Vanity Fair Italia", "Il Dubbio", "Formiche.net", "Linkiesta", "Domani",
+  "Italia Oggi", "l'Unità", "L'Unità", "Il Resto del Carlino", "il Resto del Carlino", "Leggo", "Leggo.it", "Avanti!", "Avanti! online",
+  "La Discussione", "Secolo d'Italia", "l'Occidentale", "L'Occidentale", "Rivoluzione liberale", "Rivoluzione Liberale"]);
+// Stampa estera: una testata per paese (G20 e poco altro), con Google News di quel paese come riserva
+const FOREIGN_FEEDS = [
+  ["Stati Uniti", "en", "The New York Times", "https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml", "US:en"],
+  ["Regno Unito", "en", "The Guardian", "https://www.theguardian.com/uk/rss", "GB:en"],
+  ["Francia", "fr", "Le Monde", "https://www.lemonde.fr/rss/une.xml", "FR:fr"],
+  ["Germania", "de", "Der Spiegel", "https://www.spiegel.de/schlagzeilen/index.rss", "DE:de"],
+  ["Spagna", "es", "El País", "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/portada", "ES:es"],
+  ["Giappone", "ja", "NHK", "https://www3.nhk.or.jp/rss/news/cat0.xml", "JP:ja"],
+  ["Cina", "zh", "人民网", "http://www.people.com.cn/rss/politics.xml", "CN:zh-Hans"],
+  ["Russia", "ru", "Коммерсантъ", "https://www.kommersant.ru/RSS/news.xml", "RU:ru"],
+  ["India", "en", "The Hindu", "https://www.thehindu.com/news/national/feeder/default.rss", "IN:hi"],
+  ["Brasile", "pt", "Folha de S.Paulo", "https://feeds.folha.uol.com.br/emcimadahora/rss091.xml", "BR:pt-419"],
+  ["Argentina", "es", "Clarín", "https://www.clarin.com/rss/lo-ultimo/", "AR:es-419"],
+  ["Messico", "es", "La Jornada", "https://www.jornada.com.mx/rss/edicion.xml", "MX:es-419"],
+  ["Canada", "fr", "Le Devoir", "https://www.ledevoir.com/rss/manchettes.xml", "CA:fr"],
+  ["Australia", "en", "ABC News", "https://www.abc.net.au/news/feed/51120/rss.xml", "AU:en"],
+  ["Sudafrica", "en", "News24", "https://feeds.news24.com/articles/news24/TopStories/rss", "ZA:en"],
+  ["Corea del Sud", "ko", "연합뉴스", "https://www.yna.co.kr/rss/news.xml", "KR:ko"],
+  ["Turchia", "tr", "Hürriyet", "https://www.hurriyet.com.tr/rss/anasayfa", "TR:tr"],
+  ["Indonesia", "id", "Tempo", "https://rss.tempo.co/nasional", "ID:id"],
+  ["Arabia Saudita", "ar", "الشرق الأوسط", "https://aawsat.com/feed", "SA:ar"],
+  ["Unione europea", "en", "Politico Europe", "https://www.politico.eu/feed/", ""]
+];
+
+function tfetch(url, ms = 8000){
+  const c = new AbortController(); const t = setTimeout(() => c.abort(), ms);
+  return fetch(url, { signal: c.signal }).finally(() => clearTimeout(t));
+}
+function decode(s){ return new DOMParser().parseFromString("<p>" + s + "</p>", "text/html").body.textContent.replace(/\s+/g, " ").trim(); }
+function parseXml(txt){ const x = new DOMParser().parseFromString(txt, "text/xml"); return [...x.querySelectorAll("item > title, entry > title")].map(t => t.textContent); }
+async function fetchTitles(url){
+  const e = encodeURIComponent(url);
+  const tries = [
+    async () => { const r = await tfetch("https://api.rss2json.com/v1/api.json?rss_url=" + e); const j = await r.json(); if (j.status !== "ok") throw 0; return j.items.map(i => i.title); },
+    async () => parseXml(await (await tfetch("https://api.allorigins.win/raw?url=" + e)).text()),
+    async () => parseXml(await (await tfetch("https://corsproxy.io/?url=" + e)).text())
+  ];
+  for (const t of tries){
+    try { const titles = await t(); if (titles && titles.length) return titles.map(decode).filter(x => x.split(" ").length >= 3); } catch (err) {}
+  }
+  return [];
+}
+// "Titolo - Testata" (formato di Google News)
+function splitGN(t){ const i = t.lastIndexOf(" - "); return i > 10 ? [t.slice(0, i).trim(), t.slice(i + 3).trim()] : [t, "Google News"]; }
+
+const gnSearch = q => `https://news.google.com/rss/search?q=${encodeURIComponent(q)}&hl=it&gl=IT&ceid=IT:it`;
+const norm = s => s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "");
+async function loadOutlet([src, url, domain, w = 1]){
+  let titles = (await fetchTitles(url)).slice(0, 40);
+  if (titles.length < 3){
+    // riserva (si aggiunge ai pochi titoli trovati): Google News, ultime 48 ore
+    const q = domain ? `site:${domain} when:2d` : `"${src}" when:2d`;
+    titles = titles.concat((await fetchTitles(gnSearch(q))).map(splitGN)
+      .filter(([, s]) => domain || norm(s).includes(norm(src)))
+      .map(([t]) => t).slice(0, 40));
+  }
+  return titles.map(text => ({ src, text, w }));
+}
+async function loadItalian(){
+  // sezioni in più di una testata già presente: senza riserva, per non duplicare
+  const isExtra = f => !f[2] && IT_FEEDS.some(g => g[0] === f[0] && g[2]);
+  const main = IT_FEEDS.filter(f => !isExtra(f)).map(loadOutlet);
+  const extra = IT_FEEDS.filter(isExtra).map(async ([src, url, , w = 1]) => (await fetchTitles(url)).slice(0, 40).map(text => ({ src, text, w })));
+  const gn = GN_TOPICS.map(async t => (await fetchTitles(gnUrl("IT:it", t))).map(x => {
+    const [text, src] = splitGN(x); return { src, text, w: NATIONAL.has(src) ? 1 : LOCAL };
+  }));
+  return (await Promise.all([...main, ...extra, ...gn])).flat();
+}
+async function loadForeign(){
+  const res = await Promise.all(FOREIGN_FEEDS.map(async ([country, lang, name, url, ceid]) => {
+    let items = (await fetchTitles(url)).slice(0, 15).map(text => ({ src: name, country, lang, text }));
+    if (items.length < 3 && ceid){
+      items = (await fetchTitles(gnUrl(ceid))).slice(0, 15).map(x => { const [text, src] = splitGN(x); return { src, country, lang: ceid.split(":")[1].slice(0, 2), text }; });
+    }
+    return items;
+  }));
+  return res.flat();
+}
+// traduzione automatica in italiano (MyMemory, gratuito, senza account): pochi titoli per paese
+const MM_LANG = { zh: "zh-CN" };
+async function translate(text, lang){
+  const r = await tfetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=${MM_LANG[lang] || lang}|it`, 7000);
+  const j = await r.json();
+  const t = j && j.responseData && j.responseData.translatedText;
+  if (!t || j.responseStatus != 200 || /MYMEMORY|QUERY LENGTH|INVALID/i.test(t)) throw 0;
+  return decode(t);
+}
+async function translateSome(fx, perCountry = 3){
+  const pick = [], count = {};
+  for (const it of fx){ if (it.lang === "it") continue; count[it.country] = (count[it.country] || 0) + 1; if (count[it.country] <= perCountry) pick.push(it); }
+  const out = [];
+  let i = 0;
+  const worker = async () => { while (i < pick.length){ const it = pick[i++];
+    try { const t = await translate(it.text, it.lang); if (t.split(" ").length >= 3) out.push({ src: `${it.src}, ${it.country}`, text: t, orig: it.text, w: TR_W, tr: true }); } catch (e) {} } };
+  await Promise.all(Array.from({ length: 6 }, worker));
+  return out;
+}
+function dedupe(items){
+  const seen = new Set();
+  return items.filter(it => { const k = it.text.toLowerCase(); if (seen.has(k)) return false; seen.add(k); return true; });
+}
+
+/* ---------- interfaccia ---------- */
+const $ = id => document.getElementById(id);
+const SNAP_IT = SNAPSHOT.map(([src, text]) => ({ src, text, w: 1 }));
+const TR_W = 0.25;   // peso dei titoli esteri tradotti: entrano nei versi, ma di rado
+const SNAP_FX = SNAPSHOT_FOREIGN.map(([country, lang, text]) => ({ src: "stampa estera", country, lang, text }));
+const SNAP_TR = SNAPSHOT_FOREIGN.map(([country, lang, text, it]) => ({ src: `Stampa estera, ${country}`, text: it, orig: text, w: TR_W, tr: true }));
+// due corpora: solo italiani, e italiani + esteri tradotti (usato in circa una poesia su tre)
+const MIX_P = 0.35;
+let corpus, corpusBase;
+function setCorpus(it, tr, fx){ corpusBase = buildCorpus(it, fx); corpus = tr.length ? buildCorpus([...it, ...tr], fx) : corpusBase; }
+setCorpus(SNAP_IT, SNAP_TR, SNAP_FX);
+let corpusDate = SNAPSHOT_DATE, live = false, timer = null, current = [];
+const sourceNames = items => [...new Set(items.filter(i => !i.tr).map(i => i.src))];
+const currentForm = () => FORMS.find(f => f.id === $("form").value) || FORMS[0];
+
+FORMS.forEach(f => { const o = document.createElement("option"); o.value = f.id; o.textContent = f.name; $("form").appendChild(o); });
+$("form").value = "sonetto";
+try { const saved = localStorage.getItem("pdg-form"); if (saved && FORMS.some(f => f.id === saved)) $("form").value = saved; } catch (e) {}
+
+function setStatus(extra){
+  const n = corpus.items.filter(i => !i.tr).length, names = sourceNames(corpus.items);
+  const fx = corpus.foreign || [], countries = new Set(fx.map(f => f.country));
+  const ntr = corpus.items.filter(i => i.tr).length;
+  const when = extra || (live ? `aggiornati oggi alle ${new Date().toLocaleTimeString("it-IT", { hour: "2-digit", minute: "2-digit" })}` : corpusDate);
+  $("status").innerHTML = `<span class="dot${live ? " live" : ""}"></span>${n} titoli da ${names.length} testate italiane, ${fx.length} dalla stampa estera di ${countries.size} paesi (${ntr} tradotti in italiano), ${when}`;
+  $("sources").textContent = "Fonti italiane: " + names.join(", ") + "." + (countries.size ? " Stampa estera: " + [...countries].join(", ") + "." : "");
+}
+
+function clearProv(){ document.querySelectorAll(".f.on").forEach(x => x.classList.remove("on")); $("prov").classList.remove("show"); $("prov").innerHTML = ""; }
+document.addEventListener("click", clearProv);
+
+function showProv(f, src, text){
+  document.querySelectorAll(".f.on").forEach(x => x.classList.remove("on")); f.classList.add("on");
+  $("prov").innerHTML = "";
+  const b = document.createElement("b"); b.textContent = src;
+  $("prov").append(b, document.createTextNode(": " + text)); $("prov").classList.add("show");
+}
+function bindProv(f, src, text){
+  const show = () => showProv(f, src, text);
+  f.addEventListener("pointerenter", ev => { if (ev.pointerType === "mouse") show(); });
+  f.addEventListener("pointerleave", ev => { if (ev.pointerType === "mouse") clearProv(); });
+  f.addEventListener("focus", show);
+  f.addEventListener("click", ev => { ev.stopPropagation(); show(); });
+}
+function foreignLine(l, i){
+  const v = document.createElement("div"); v.className = "v x"; v.style.animationDelay = (i * 70) + "ms";
+  const n = document.createElement("span"); n.className = "n";
+  const t = document.createElement("span"); t.className = "t";
+  const f = document.createElement("span"); f.className = "f"; f.tabIndex = 0; f.lang = l.it.lang; f.dir = "auto";
+  f.textContent = l.text;
+  const src = l.it.src === "stampa estera" ? `Stampa estera, ${l.it.country}` : `${l.it.src} (${l.it.country})`;
+  bindProv(f, src, l.it.text);
+  t.appendChild(f);
+  const r = document.createElement("span"); r.className = "r"; r.textContent = "∗";
+  v.append(n, t, r);
+  return v;
+}
+
+function render(){
+  const form = currentForm();
+  current = compose(Math.random() < MIX_P ? corpus : corpusBase, form);
+  $("pscheme").textContent = form.note;
+  $("ptitle").textContent = current.title || "";
+  clearProv();
+  const poem = $("poem"); poem.innerHTML = "";
+  let st = document.createElement("div"); st.className = "stanza"; poem.appendChild(st);
+  let i = 0;
+  current.forEach(l => {
+    if (l.br){ st = document.createElement("div"); st.className = "stanza"; poem.appendChild(st); return; }
+    if (l.foreign){ st.appendChild(foreignLine(l, i++)); return; }
+    const v = document.createElement("div"); v.className = "v"; v.style.animationDelay = (i++ * 70) + "ms";
+    const n = document.createElement("span"); n.className = "n"; n.textContent = l.metric || "";
+    const t = document.createElement("span"); t.className = "t";
+    l.parts.forEach((p, k) => {
+      const f = document.createElement("span"); f.className = "f"; f.tabIndex = 0;
+      let txt = p.text; if (k === 0) txt = txt.charAt(0).toUpperCase() + txt.slice(1);
+      f.textContent = txt;
+      const it = corpus.items[p.hid];
+      bindProv(f, it.tr ? it.src + " (tradotto)" : it.src, it.tr ? `${it.text}. Originale: ${it.orig}` : it.text);
+      t.appendChild(f);
+    });
+    const r = document.createElement("span"); r.className = "r"; r.textContent = l.label || "";
+    v.append(n, t, r); st.appendChild(v);
+  });
+  [...poem.querySelectorAll(".stanza")].forEach(s => { if (!s.children.length) s.remove(); });
+}
+
+const lineText = l => l.foreign ? l.text : l.parts.map(p => p.text).join(" ").replace(/^./, c => c.toUpperCase());
+function poemText(){
+  let out = `POESIA LA NOTIZIA\n${currentForm().name}, ${corpusDate}\n\n` + (current.title ? current.title + "\n\n" : "");
+  current.forEach(l => { out += l.br ? "\n" : lineText(l) + "\n"; });
+  return out.trim() + "\n\nJacopo Natoli\n";
+}
+
+/* ---------- immagine JPEG ---------- */
+async function makeImage(){
+  const metric = $("metric").checked, S = 2, W = 1080, P = 110;
+  const F = '"EB Garamond", Garamond, Georgia, serif';
+  try { await Promise.all([document.fonts.load(`40px "EB Garamond"`), document.fonts.load(`italic 40px "EB Garamond"`)]); } catch (e) {}
+  const c = document.createElement("canvas"), ctx = c.getContext("2d");
+  const size = 40, lh = 56, gap = 30, left = P + (metric ? 60 : 0), right = W - P - (metric ? 50 : 0), maxW = right - left;
+  ctx.font = `${size}px ${F}`;
+  // wrap
+  const rows = [];
+  current.forEach(l => {
+    if (l.br){ rows.push({ br: true }); return; }
+    if (l.foreign){ rows.push({ text: l.text, l, fx: true }); return; }
+    const words = lineText(l).split(" "); let cur = "", first = true;
+    words.forEach(w => {
+      const test = cur ? cur + " " + w : w;
+      if (ctx.measureText(test).width > maxW - (first ? 0 : 36) && cur){ rows.push({ text: cur, l: first ? l : null, indent: !first }); cur = w; first = false; }
+      else cur = test;
+    });
+    rows.push({ text: cur, l: first ? l : null, indent: !first });
+  });
+  while (rows.length && rows[rows.length - 1].br) rows.pop();
+  const title = current.title || "";
+  let h = P + 60 + 90 + (title ? 80 : 0);
+  rows.forEach(r => h += r.br ? gap : lh);
+  h += 90 + 40 + P - 40;
+  c.width = W * S; c.height = h * S; ctx.scale(S, S);
+  ctx.fillStyle = "#000"; ctx.fillRect(0, 0, W, h);
+  ctx.textBaseline = "alphabetic";
+  ctx.fillStyle = "#ece8df"; ctx.font = `30px ${F}`;
+  if ("letterSpacing" in ctx) ctx.letterSpacing = "5px";
+  ctx.fillText("POESIA LA NOTIZIA", P, P + 30);
+  if ("letterSpacing" in ctx) ctx.letterSpacing = "0px";
+  let y = P + 60 + 90;
+  if (title){ ctx.font = `italic 50px ${F}`; ctx.fillStyle = "#ece8df"; ctx.fillText(title, P, y); y += 80; }
+  rows.forEach(r => {
+    if (r.br){ y += gap; return; }
+    if (r.fx){
+      const nonLatin = /[\u0600-\u06ff\u0900-\u097f\u3040-\u9fff\uac00-\ud7af]/.test(r.text);
+      ctx.font = `${nonLatin ? "" : "italic "}30px ${F}, "Noto Sans", sans-serif`; ctx.fillStyle = "#a9a49a";
+      ctx.fillText(r.text, left, y, maxW);
+      if (metric){ ctx.font = `italic 32px ${F}`; ctx.fillStyle = "#93a6ff"; ctx.fillText("∗", right + 20, y); }
+      y += lh; return;
+    }
+    ctx.font = `${size}px ${F}`; ctx.fillStyle = "#ece8df";
+    ctx.fillText(r.text, left + (r.indent ? 36 : 0), y);
+    if (metric && r.l){
+      ctx.font = `22px ${F}`; ctx.fillStyle = "#ff5d6c"; ctx.textAlign = "right";
+      if (r.l.metric) ctx.fillText(String(r.l.metric), left - 22, y);
+      ctx.textAlign = "left"; ctx.font = `italic 32px ${F}`; ctx.fillStyle = "#93a6ff";
+      if (r.l.label) ctx.fillText(r.l.label, right + 20, y);
+    }
+    y += lh;
+  });
+  y += 60;
+  ctx.fillStyle = "#8c887f"; ctx.font = `24px ${F}`;
+  ctx.fillText(`${currentForm().name}, ${corpusDate}`, P, y);
+  return new Promise(res => c.toBlob(res, "image/jpeg", 0.92));
+}
+let downloads = null;
+if (window.claude && typeof window.claude.use === "function") window.claude.use("downloads").then(d => { downloads = d; }).catch(() => {});
+function flash(btn, msg, orig){ btn.textContent = msg; setTimeout(() => btn.textContent = orig, 2000); }
+$("img").addEventListener("click", async () => {
+  const btn = $("img"), name = `poesia-la-notizia-${currentForm().id}-${Date.now()}.jpg`;
+  btn.textContent = "Preparo l'immagine";
+  try {
+    const blob = await makeImage();
+    if (downloads){
+      try { await downloads.save({ filename: name, data: blob }); flash(btn, "Immagine salvata", "Copia immagine"); }
+      catch (e) { flash(btn, e && e.code === "declined" ? "Salvataggio annullato" : "Salvataggio non disponibile qui", "Copia immagine"); }
+    } else {
+      const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = name;
+      document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+      flash(btn, "Immagine salvata", "Copia immagine");
+    }
+  } catch (e) { flash(btn, "Immagine non riuscita", "Copia immagine"); }
+});
+
+$("go").addEventListener("click", render);
+$("form").addEventListener("change", () => { try { localStorage.setItem("pdg-form", $("form").value); } catch (e) {} render(); });
+$("metric").addEventListener("change", e => $("root").classList.toggle("metric-on", e.target.checked));
+$("auto").addEventListener("change", e => { clearInterval(timer); if (e.target.checked) timer = setInterval(render, 15000); });
+$("copy").addEventListener("click", async () => {
+  try { await navigator.clipboard.writeText(poemText()); flash($("copy"), "Testo copiato", "Copia testo"); }
+  catch (e) { flash($("copy"), "Copia non disponibile qui", "Copia testo"); }
+});
+
+setStatus(); render();
+
+(async () => {
+  // 1) notizie scaricate ogni giorno dal server (versione GitHub)
+  try {
+    const r = await tfetch("news.json?t=" + Date.now(), 6000);
+    if (r.ok){
+      const j = await r.json();
+      if (j.items && j.items.length >= 30){
+        const up = new Date(j.updated);
+        setCorpus(j.items.filter(i => !i.tr), j.items.filter(i => i.tr), j.foreign || []);
+        corpusDate = up.toLocaleDateString("it-IT", { day: "numeric", month: "long", year: "numeric" });
+        live = Date.now() - up.getTime() < 36 * 3600 * 1000;
+        setStatus(`aggiornati il ${corpusDate} alle ${up.toLocaleTimeString("it-IT", { hour: "2-digit", minute: "2-digit" })}`);
+        render();
+        return;
+      }
+    }
+  } catch (e) {}
+  // 2) lettura diretta dei feed tramite servizi gratuiti (file aperto dal computer o dal telefono)
+  const [it, fx] = await Promise.all([loadItalian(), loadForeign()]);
+  const items = dedupe(it);
+  if (items.length >= 30){
+    const fxOk = fx.length >= 5 ? dedupe(fx) : [];
+    const tr = fxOk.length ? await translateSome(fxOk) : [];
+    setCorpus(items, tr, fxOk.length ? fxOk : SNAP_FX); live = true;
+    corpusDate = new Date().toLocaleDateString("it-IT", { day: "numeric", month: "long", year: "numeric" });
+    setStatus(); render();
+  }
+  // 3) altrimenti restano le notizie di archivio incluse nella pagina
+})();
+</script>
+</body>
+</html>

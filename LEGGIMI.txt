@@ -1,0 +1,41 @@
+POESIA LA NOTIZIA — come metterla online con le notizie aggiornate ogni giorno
+
+Contenuto
+  index.html                     la pagina (contiene anche l'elenco delle testate: cerca "const IT_FEEDS")
+  news.json                      i titoli del giorno (all'inizio quelli del 6 ottobre 2026)
+  scripts/fetch-news.mjs         lo script che scarica i titoli e traduce quelli esteri
+  .github/workflows/news.yml     l'automatismo che lo lancia alle 6, 12 e 18
+  archivio/                      qui si accumula un file al giorno con tutti i titoli usati
+
+1. Crea un account gratuito su github.com (se non lo hai).
+2. In alto a destra "+" > New repository. Nome: poesia-la-notizia. Public. Create repository.
+3. Clicca "uploading an existing file" e trascina index.html, news.json, LEGGIMI.txt e la cartella scripts.
+   Commit changes.
+4. La cartella .github sul Mac è nascosta, quindi creala a mano:
+   Add file > Create new file. Come nome scrivi esattamente:  .github/workflows/news.yml
+   Incolla il contenuto del file news.yml. Commit changes.
+5. Settings > Pages > Source: "GitHub Actions".
+6. Actions > "Aggiorna notizie" > Run workflow. Dopo 2-3 minuti l'esecuzione ha la spunta verde.
+7. La pagina è su:  https://TUONOME.github.io/poesia-la-notizia/
+   Nell'ABOUT il pallino rosso indica notizie delle ultime 36 ore.
+
+Controllare quali giornali rispondono
+  Actions > ultima esecuzione > aggiorna > "Scarica i titoli dei giornali".
+  ok = feed letto, FAIL = non risponde, "riserva Google News" = presi da Google News al suo posto.
+
+Aggiungere o togliere una testata
+  In index.html, nella lista IT_FEEDS, una riga così:
+  ["Nome della testata", "indirizzo del feed RSS", "dominio.it"],
+  Il dominio serve per la riserva su Google News se il feed non risponde.
+  Per un giornale locale aggiungi in fondo LOCAL:  ["Nome", "feed", "dominio.it", LOCAL],
+
+Traduzioni (facoltativo)
+  Senza fare niente, i titoli esteri vengono tradotti con MyMemory, gratuito.
+  Per traduzioni migliori: crea una chiave gratuita "DeepL API Free" su deepl.com,
+  poi nel progetto Settings > Secrets and variables > Actions > New repository secret,
+  nome DEEPL_KEY, valore la chiave.
+
+Note
+- Se lo script trova meno di 30 titoli, resta online il news.json precedente.
+- Ogni esecuzione salva le notizie nel progetto: questo lo tiene "attivo", così GitHub
+  non sospende gli aggiornamenti automatici.
