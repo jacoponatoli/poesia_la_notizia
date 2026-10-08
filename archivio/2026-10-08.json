@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-08T14:24:35.507Z",
+ "updated": "2026-10-08T14:26:25.938Z",
  "items": [
   {
    "src": "ANSA",
@@ -223,12 +223,12 @@
   },
   {
    "src": "Corriere della Sera",
-   "text": "Il fantasma della peste. Spie di Germania. La lezione di Messi a CR7 | Il nuovo episodio del podcast «Giorno...",
+   "text": "Il «Bici velox» arriva a Parma, è la prima città in Italia a fermare le due ruote che corrono come scooter: «Già 15 sanzioni in poche ore, multe fino a 15mila euro»",
    "w": 1
   },
   {
    "src": "Corriere della Sera",
-   "text": "Il «Bici velox» arriva a Parma, è la prima città in Italia a fermare le due ruote che corrono come scooter: «Già 15 sanzioni in poche ore, multe fino a 15mila euro»",
+   "text": "Il fantasma della peste. Spie di Germania. La lezione di Messi a CR7 | Il nuovo episodio del podcast «Giorno...",
    "w": 1
   },
   {
@@ -468,12 +468,12 @@
   },
   {
    "src": "La Stampa",
-   "text": "Tram deraglia in corso Einaudi dopo lo scontro con un furgone: molta paura, feriti lievi",
+   "text": "Traffico di rifiuti: container con vecchi tv e condizionatori diretto in Africa sequestrato a Novara",
    "w": 1
   },
   {
    "src": "La Stampa",
-   "text": "Traffico di rifiuti: container con vecchi tv e condizionatori diretto in Africa sequestrato a Novara",
+   "text": "Tram deraglia in corso Einaudi dopo lo scontro con un furgone: molta paura, feriti lievi",
    "w": 1
   },
   {
@@ -508,12 +508,12 @@
   },
   {
    "src": "La Stampa",
-   "text": "Specchio dei tempi, le lettere di giovedì 8 ottobre 2026",
+   "text": "Il presidente Mattarella firma tre grazie, c'è anche il gioielliere che uccise i rapinatori nel 2008",
    "w": 1
   },
   {
    "src": "La Stampa",
-   "text": "Il presidente Mattarella firma tre grazie, c'è anche il gioielliere che uccise i rapinatori nel 2008",
+   "text": "Specchio dei tempi, le lettere di giovedì 8 ottobre 2026",
    "w": 1
   },
   {
@@ -1503,6 +1503,11 @@
   },
   {
    "src": "Il Giornale",
+   "text": "Garlasco, quelle due richieste di ingresso a casa Poggi rifiutate a Garofano dalla pm. E la difesa di Stasi punta di nuovo sul dispenser del sapone",
+   "w": 1
+  },
+  {
+   "src": "Il Giornale",
    "text": "Premio Nazionale Honos 2026: a Noto il riconoscimento a chi promuove legalità, cultura e impegno civile",
    "w": 1
   },
@@ -1559,11 +1564,6 @@
   {
    "src": "Il Giornale",
    "text": "La sinistra ha problemi di donne",
-   "w": 1
-  },
-  {
-   "src": "Il Giornale",
-   "text": "Pellicano ferito bussa con il becco al centro ricerca per chiedere aiuto",
    "w": 1
   },
   {
@@ -2628,6 +2628,11 @@
   },
   {
    "src": "ItaliaOggi",
+   "text": "C'è chi non vuol sapere più niente",
+   "w": 1
+  },
+  {
+   "src": "ItaliaOggi",
    "text": "Due fratelli gemelli magistrati a 25 anni",
    "w": 1
   },
@@ -2809,11 +2814,6 @@
   {
    "src": "ItaliaOggi",
    "text": "Macchine, IA sotto controllo e sanzioni fino a 100 mila euro",
-   "w": 1
-  },
-  {
-   "src": "ItaliaOggi",
-   "text": "Concordato, poste straordinarie irrilevanti. Ecco tutte le istruzioni",
    "w": 1
   },
   {
@@ -4198,6 +4198,11 @@
   },
   {
    "src": "TGCom24",
+   "text": "Proteste degli studenti in Francia, ministro dell'Istruzione promette piano d'urgenza per i prof assenti",
+   "w": 1
+  },
+  {
+   "src": "TGCom24",
    "text": "Davide Iacopini operato d'urgenza alla testa per trauma cranico: è grave",
    "w": 1
   },
@@ -4209,11 +4214,6 @@
   {
    "src": "TGCom24",
    "text": "Roma, aggredito l'attore Davide Iacopini: si indaga su una sfida social",
-   "w": 1
-  },
-  {
-   "src": "TGCom24",
-   "text": "Nuove proteste degli studenti in Francia, ministro promette piano d'urgenza per i prof assenti",
    "w": 1
   },
   {
@@ -4348,22 +4348,72 @@
   },
   {
    "src": "Sky TG24",
-   "text": "Clausola di salvaguardia, l'Ue: “Valutazione positiva per l'Italia, nessun rischio”",
+   "text": "Nina Roza, il trailer esclusivo del film premiato a Berlino e scelto per gli Oscar",
    "w": 1
   },
   {
    "src": "Sky TG24",
-   "text": "Nuova legge elettorale, via libera della Camera. Meloni: \"Centrodestra è unito\". DIRETTA",
+   "text": "Istanbul, crolla palazzo: due morti e tre dispersi",
    "w": 1
   },
   {
    "src": "Sky TG24",
-   "text": "Roma, proseguono indagini sull'aggressione all'attore Davide Iacopini: cosa sappiamo",
+   "text": "Ucraina, raid russo su bus a Kramatorsk: almeno 33 morti",
+   "w": 1
+  },
+  {
+   "src": "Sky TG24",
+   "text": "Delitto di Garlasco, accertamenti della Procura sulle indagini dei Ris del 2007",
+   "w": 1
+  },
+  {
+   "src": "Sky TG24",
+   "text": "Carabinieri Gioia Tauro arrestano latitante nascosto",
+   "w": 1
+  },
+  {
+   "src": "Sky TG24",
+   "text": "Roma, aggressioni con minicar nera. Grave l'attore Iacopini",
+   "w": 1
+  },
+  {
+   "src": "Sky TG24",
+   "text": "Medio oriente, gli Houthi annunciano di aver colpito aeroporto di Riad. LIVE",
+   "w": 1
+  },
+  {
+   "src": "Sky TG24",
+   "text": "Guerra Ucraina Russia, Kiev: \"Raid su un autobus a Kramatorsk, oltre 30 morti\". LIVE",
+   "w": 1
+  },
+  {
+   "src": "Sky TG24",
+   "text": "The Orange Plague, una statua dorata di Trump nudo è stata esposta al Parlamento europeo",
+   "w": 1
+  },
+  {
+   "src": "Sky TG24",
+   "text": "Proseguono indagini su aggressione a Davide Iacopini. Attore operato, prognosi riservata",
    "w": 1
   },
   {
    "src": "Sky TG24",
    "text": "Proteste in Francia, da Parigi a Nantes nuove manifestazioni degli studenti",
+   "w": 1
+  },
+  {
+   "src": "Sky TG24",
+   "text": "Clausola di salvaguardia, l'Ue: “Valutazione positiva per l'Italia, nessun rischio”",
+   "w": 1
+  },
+  {
+   "src": "Sky TG24",
+   "text": "Chi sono i Righeira e perché si sono separati, 10 cose da sapere sul celebre duo Anni '80",
+   "w": 1
+  },
+  {
+   "src": "Sky TG24",
+   "text": "Nuova legge elettorale, via libera della Camera. Meloni: \"Centrodestra è unito\". DIRETTA",
    "w": 1
   },
   {
@@ -4393,17 +4443,22 @@
   },
   {
    "src": "Sky TG24",
+   "text": "Come funziona la nuova legge elettorale, dalle preferenze al premio di governabilità",
+   "w": 1
+  },
+  {
+   "src": "Sky TG24",
    "text": "Terre des Hommes: in 10 anni sono saliti del 43% i reati sui minori in Italia",
    "w": 1
   },
   {
    "src": "Sky TG24",
-   "text": "The Orange Plague, una statua dorata di Trump nudo è stata esposta al Parlamento europeo",
+   "text": "Claudio Baglioni lancia 7 concerti a Villa Borghese: “Ho giocato con la vita per 60 anni”",
    "w": 1
   },
   {
    "src": "Sky TG24",
-   "text": "Claudio Baglioni lancia 7 concerti a Villa Borghese: “Ho giocato con la vita per 60 anni”",
+   "text": "Maltempo sull'Italia, allerta in 12 regioni: danni in Toscana. FOTO",
    "w": 1
   },
   {
@@ -4439,11 +4494,6 @@
   {
    "src": "Sky TG24",
    "text": "Pietracatella, ispezione su pc Istituto Agrario per scoprire chi ha cercato ricina sul web",
-   "w": 1
-  },
-  {
-   "src": "Sky TG24",
-   "text": "Medio oriente, gli Houthi annunciano di aver colpito aeroporto di Riad. LIVE",
    "w": 1
   },
   {
@@ -4494,56 +4544,6 @@
   {
    "src": "Sky TG24",
    "text": "Omicidio Villa Pamphili, no nuova perizia psichiatrica per Kaufmann: sentenza 5 novembre",
-   "w": 1
-  },
-  {
-   "src": "Sky TG24",
-   "text": "Peste polmonare in Siberia, Trump: \"Non crediamo si tratti di un'arma biologica\"",
-   "w": 1
-  },
-  {
-   "src": "Sky TG24",
-   "text": "Roberto Zibetti: \"Cecchetto guarda sempre oltre, Bertolucci aveva la polisemia dei poeti\"",
-   "w": 1
-  },
-  {
-   "src": "Sky TG24",
-   "text": "Levante presenta nuovo album: Dell'Amore, il Fallimento e...",
-   "w": 1
-  },
-  {
-   "src": "Sky TG24",
-   "text": "Guerra Ucraina Russia, Kiev: \"Raid su un autobus a Kramatorsk, oltre 30 morti\". LIVE",
-   "w": 1
-  },
-  {
-   "src": "Sky TG24",
-   "text": "Anne Carson vince il Premio Nobel per la Letteratura 2026: chi è la saggista e poetessa",
-   "w": 1
-  },
-  {
-   "src": "Sky TG24",
-   "text": "Federproprietà: cedolare secca e affitti più bassi, salvare il commercio di quartiere",
-   "w": 1
-  },
-  {
-   "src": "Sky TG24",
-   "text": "Euro Digitale, Cipollone (Bce): \"Affiancherà contante. Primo test nel 2027\"",
-   "w": 1
-  },
-  {
-   "src": "Sky TG24",
-   "text": "Raoul Bova parla della storia con Beatrice Arnera",
-   "w": 1
-  },
-  {
-   "src": "Sky TG24",
-   "text": "Francia, scontri a Parigi durante le proteste degli studenti",
-   "w": 1
-  },
-  {
-   "src": "Sky TG24",
-   "text": "Brasile, studenti in piazza contro i tagli all'istruzione",
    "w": 1
   },
   {
@@ -4604,6 +4604,11 @@
   {
    "src": "Adnkronos",
    "text": "Chauveau (Ina): \"Tra propaganda e disinformazione resta l'illusione del vero\"",
+   "w": 1
+  },
+  {
+   "src": "AGI",
+   "text": "Garlasco, legali Stasi: \"Fare accertamenti sul dispenser del sapone\"",
    "w": 1
   },
   {
@@ -5543,12 +5548,12 @@
   },
   {
    "src": "Tuttosport",
-   "text": "Manovra: Manfredi, ai Comuni serve un miliardo di euro per 4 emergenze",
+   "text": "Messi, addio e lacrime: dentro lo show",
    "w": 1
   },
   {
    "src": "Tuttosport",
-   "text": "Messi, addio e lacrime: dentro lo show",
+   "text": "Manovra: Manfredi, ai Comuni serve un miliardo di euro per 4 emergenze",
    "w": 1
   },
   {
@@ -5918,6 +5923,11 @@
   },
   {
    "src": "Quotidiano.net",
+   "text": "Salute mentale, rompere il silenzio delle donne",
+   "w": 0.3
+  },
+  {
+   "src": "Quotidiano.net",
    "text": "Oftamologia, Lamoure (Content): “La partnership con NTC ha aperto nuove opportunità sui mercati internazionali”",
    "w": 0.3
   },
@@ -6109,11 +6119,6 @@
   {
    "src": "Quotidiano.net",
    "text": "Maggioranza tiene, ok definitivo della Camera a legge elettorale",
-   "w": 0.3
-  },
-  {
-   "src": "Quotidiano.net",
-   "text": "Dagnino \"Andiamo avanti, all'orizzonte variazione bilancio e legge di stabilità\"",
    "w": 0.3
   },
   {
@@ -6543,6 +6548,11 @@
   },
   {
    "src": "ANSA",
+   "text": "Nasce 'Michelangelus', un nuovo carattere tipografico targato San Pietro",
+   "w": 1
+  },
+  {
+   "src": "ANSA",
    "text": "Muore a 25 anni in uno stabilimento Amazon a Roma, ipotesi malore",
    "w": 1
   },
@@ -6563,7 +6573,7 @@
   },
   {
    "src": "ANSA",
-   "text": "L'aggressione all'attore Iacopini, gli autori erano su una minicar elettrica nera",
+   "text": "L'attore Iacopini con un trauma cranico grave, sottoposto a intervento",
    "w": 1
   },
   {
@@ -6719,11 +6729,6 @@
   {
    "src": "ANSA",
    "text": "Malore in campo in oratorio, morto il tredicenne ricoverato",
-   "w": 1
-  },
-  {
-   "src": "ANSA",
-   "text": "Terremoto di magnitudo 4.7 al largo delle isole Eolie",
    "w": 1
   },
   {
@@ -6884,11 +6889,6 @@
   {
    "src": "ANSA",
    "text": "Claudio Baglioni, \"ho temuto di non tornare più su un palco\"",
-   "w": 1
-  },
-  {
-   "src": "ANSA",
-   "text": "Nasce 'Michelangelus', un nuovo carattere tipografico targato San Pietro",
    "w": 1
   },
   {
@@ -7417,19 +7417,19 @@
    "w": 1
   },
   {
+   "src": "Virgilio Sapere",
+   "text": "Scuole chiuse per maltempo giovedì 8 ottobre, l'elenco dei comuni",
+   "w": 0.3
+  },
+  {
    "src": "Virgilio",
    "text": "Meloni accusa Floriano Della Bella, consigliere Pd a Pontedera, di averla insultata definendola \"ciociara\"",
    "w": 0.3
   },
   {
-   "src": "ArezzoNotizie",
-   "text": "Pioggia e temporali: scatta l'allerta arancione. Scuola chiusa ad Arezzo",
-   "w": 0.3
-  },
-  {
-   "src": "Comune di Napoli",
-   "text": "Avviso di allerta meteo per fenomeni avversi previsti dalle ore 15:00 di giovedì 8 alle ore 15:00 di venerdì 9 ottobre 2026",
-   "w": 0.3
+   "src": "ANSA",
+   "text": "Bomba d'acqua sul Napoletano, auto bloccata in un sottopasso",
+   "w": 1
   },
   {
    "src": "Sky TG24",
@@ -7457,19 +7457,14 @@
    "w": 1
   },
   {
-   "src": "Corriere della Sera",
-   "text": "Un miliardo al giorno il deficit commerciale Ue con la Cina: Bruxelles vuole limiti all'import delle auto ibride, il no di Pechino",
+   "src": "Il Messaggero",
+   "text": "Putin ingaggia il generale Serghei Surovikin, detto Armageddon: dovrà colpire Kiev provocando «molti morti tra i civili»",
    "w": 1
   },
   {
    "src": "Borsa Italiana",
    "text": "Andamento depresso per le Borse europee e Milano con di nuovo al centro il risiko bancario",
    "w": 0.3
-  },
-  {
-   "src": "la Repubblica",
-   "text": "Mps, Caltagirone voterà contro il piano di Lovaglio in assemblea",
-   "w": 1
   },
   {
    "src": "Il Fatto Quotidiano",
@@ -7479,6 +7474,11 @@
   {
    "src": "QuiFinanza",
    "text": "Campari, il presidente Garavoglia rischia il processo per evasione fiscale",
+   "w": 1
+  },
+  {
+   "src": "Corriere della Sera",
+   "text": "Mps, anche Caltagirone e i Benetton si schierano con Intesa Sanpaolo: ora più in salita il contro-piano di Siena",
    "w": 1
   },
   {
@@ -7517,19 +7517,19 @@
    "w": 0.3
   },
   {
-   "src": "La Gazzetta dello Sport",
-   "text": "Djokovic su Sinner: \"Il tennis sente la sua mancanza, ma deve pensare a lungo termine\"",
-   "w": 1
-  },
-  {
    "src": "Inter.it",
    "text": "Le condizioni di Curtis Jones",
    "w": 0.3
   },
   {
-   "src": "Sportmediaset",
-   "text": "MotoGp, Dall'Igna: \"Se qualcuno deve batterci, che sia Aprilia. Marquez ci sprona\"",
+   "src": "SuperTennis",
+   "text": "Djokovic: \"Sinner mancherà al tennis, ma ha fatto la scelta giusta\"",
    "w": 0.3
+  },
+  {
+   "src": "La Gazzetta dello Sport",
+   "text": "Gran Piemonte: Del Toro e McNulty, oggi il derby stellare in casa Uae",
+   "w": 1
   },
   {
    "src": "Sky TG24",
@@ -7547,13 +7547,8 @@
    "w": 1
   },
   {
-   "src": "ANSA",
-   "text": "Bomba d'acqua sul Napoletano, auto bloccata in un sottopasso",
-   "w": 1
-  },
-  {
-   "src": "Corriere Fiorentino",
-   "text": "Allerta meteo arancione su tutta la Toscana per il maltempo: fino a giovedì 8 ottobre previsti temporali, vento e grandine. Scuole chiuse in molte città",
+   "src": "FirenzeToday",
+   "text": "Allerta arancione, Firenze si ferma: chiusi parchi e cimiteri, stop ai mercati e alla fermata Cascine",
    "w": 0.3
   },
   {
@@ -7572,6 +7567,11 @@
    "w": 0.3
   },
   {
+   "src": "la Repubblica",
+   "text": "Maltempo sull'Italia, allerta arancione in Toscana. Bomba d'acqua su Roma",
+   "w": 1
+  },
+  {
    "src": "Il Tempo",
    "text": "Roma, viaggio all'inferno sulla linea bus 437",
    "w": 1
@@ -7587,8 +7587,8 @@
    "w": 0.3
   },
   {
-   "src": "Corriere della Sera",
-   "text": "Medici e veterinari, nuovo contratto: aumenti medi di 560 euro lordi al mese (e patrocinio legale in caso di aggressioni)",
+   "src": "la Repubblica",
+   "text": "Pa, firmato il contratto di medici e dirigenti della sanità. Aumenti lordi fino a 560 euro al mese",
    "w": 1
   },
   {
@@ -7607,19 +7607,14 @@
    "w": 1
   },
   {
-   "src": "RomaToday",
-   "text": "Strada come un fiume dopo la pioggia: automobilisti intrappolati salgono sul tetto della vettura",
-   "w": 0.3
+   "src": "Il Fatto Quotidiano",
+   "text": "Barbara Spinelli, la progressista “esiliata” in lotta per i diritti nella Fortezza Europa",
+   "w": 1
   },
   {
    "src": "Corriere del Veneto",
    "text": "Nuovo studio sul disastro del Vajont, la frana fu doppia: «L'argilla divenne dura come una roccia e questo diede una spinta colossale all'acqua»",
    "w": 0.3
-  },
-  {
-   "src": "Libero Quotidiano",
-   "text": "Il Maggio francese e gli scimmiottatori italiani | Libero Quotidiano.it",
-   "w": 1
   },
   {
    "src": "QuiFinanza",
@@ -7657,13 +7652,13 @@
    "w": 0.3
   },
   {
-   "src": "Virgilio",
-   "text": "Gratta e Vinci da 10 milioni di euro a Cosenza è un falso creato con due \"perdenti\", 50enne accusato di truffa",
-   "w": 0.3
-  },
-  {
    "src": "Sky TG24",
    "text": "Filottrano, sfratto per morosità: inquilina lascia 450 Kg di rifiuti in casa",
+   "w": 1
+  },
+  {
+   "src": "Il Fatto Quotidiano",
+   "text": "Gli studenti si mobilitano come in Francia: scuole occupate in tutta Italia",
    "w": 1
   },
   {
@@ -7675,6 +7670,11 @@
    "src": "ANSA",
    "text": "Braccianti schiavi, 14 ore di lavoro per 80 centesimi a cassetta",
    "w": 1
+  },
+  {
+   "src": "Virgilio",
+   "text": "Gratta e Vinci da 10 milioni di euro a Cosenza è un falso creato con due \"perdenti\", 50enne accusato di truffa",
+   "w": 0.3
   },
   {
    "src": "Il Fatto Quotidiano",
@@ -7692,18 +7692,13 @@
    "w": 1
   },
   {
-   "src": "Virgilio",
-   "text": "Bonus trasporti 2027 cambia col Conto di mobilità fino a 400 euro con ISEE sotto i 20 mila al posto dei buoni",
-   "w": 0.3
+   "src": "Il Messaggero",
+   "text": "Bonus trasporti 2027 fino a 400 euro, le novità: le fasce di punteggio, gli importi, i limiti Isee",
+   "w": 1
   },
   {
    "src": "Adnkronos",
    "text": "Caso Garlasco, spunta dossier contro famiglia Cappa: il lungo ritratto sulle gemelle K",
-   "w": 1
-  },
-  {
-   "src": "la Repubblica",
-   "text": "È morta Barbara Spinelli, giornalista ed europarlamentare. Fu tra i fondatori di Repubblica",
    "w": 1
   },
   {
@@ -7747,6 +7742,11 @@
    "w": 1
   },
   {
+   "src": "Corriere della Sera",
+   "text": "Un miliardo al giorno il deficit commerciale Ue con la Cina: Bruxelles vuole limiti all'import delle auto ibride, il no di Pechino",
+   "w": 1
+  },
+  {
    "src": "il manifesto",
    "text": "Stop al conflitto e al riarmo: quattro proposte al «campo largo»",
    "w": 1
@@ -7757,24 +7757,14 @@
    "w": 0.3
   },
   {
-   "src": "Sala Stampa della Santa Sede",
-   "text": "Comunicato della Sala Stampa della Santa Sede: Udienza al Presidente della Repubblica della Sierra Leone",
-   "w": 0.3
-  },
-  {
    "src": "Sky TG24",
    "text": "Yemen, Houthi: 'Scali sauditi nel mirino. Colpito quello di Riad'",
    "w": 1
   },
   {
-   "src": "Il Messaggero",
-   "text": "Putin ingaggia il generale Serghei Surovikin, detto Armageddon: dovrà colpire Kiev provocando «molti morti tra i civili»",
-   "w": 1
-  },
-  {
-   "src": "RaiNews",
-   "text": "Papa: \"Dal sesso alle fragilità, dobbiamo rispondere alle domande delle famiglie\"",
-   "w": 1
+   "src": "Vatican News",
+   "text": "Amoris laetitia, guardare alle sfide delle famiglie per riscoprire il Vangelo",
+   "w": 0.3
   },
   {
    "src": "Il Tempo",
@@ -7797,11 +7787,6 @@
    "w": 1
   },
   {
-   "src": "Sky TG24",
-   "text": "Uomo giustiziato in Texas, prima esecuzione dopo il caso Pike",
-   "w": 1
-  },
-  {
    "src": "Leggo.it",
    "text": "Gaza, bambini sfollati, orfani e mutilati: la generazione distrutta dal 7 ottobre. «Quale futuro se non c'è più niente?»",
    "w": 1
@@ -7812,13 +7797,13 @@
    "w": 1
   },
   {
-   "src": "Affaritaliani",
-   "text": "Il vertice Med9 in Croazia con Meloni, Macron von der Leyen e Costa. Il momento della foto di gruppo",
-   "w": 0.3
+   "src": "Sky TG24",
+   "text": "Christa Pike, la sopravvissuta all'esecuzione negli Usa ammanettata in ospedale",
+   "w": 1
   },
   {
-   "src": "Vatican News",
-   "text": "Leone XIV: preghiamo il Rosario, conforto di Maria nelle difficoltà della vita",
+   "src": "Affaritaliani",
+   "text": "Il vertice Med9 in Croazia con Meloni, Macron von der Leyen e Costa. Il momento della foto di gruppo",
    "w": 0.3
   },
   {
@@ -7827,9 +7812,14 @@
    "w": 1
   },
   {
-   "src": "Tgcom24",
-   "text": "Iran, l'ordine del Pentagono all'esercito Usa: \"Preparatevi a nuovi attacchi, forse prima delle Midterm\"",
+   "src": "ANSA",
+   "text": "Axios: 'Ordine alle forze armate Usa per un'eventuale ripresa degli attacchi all'Iran'",
    "w": 1
+  },
+  {
+   "src": "Vatican News",
+   "text": "Leone XIV: preghiamo il Rosario, conforto di Maria nelle difficoltà della vita",
+   "w": 0.3
   },
   {
    "src": "Euronews.com",
@@ -7837,13 +7827,23 @@
    "w": 0.3
   },
   {
+   "src": "la Repubblica",
+   "text": "Svizzera senza medici di base: i “camici” arrivano dall'Italia attirati dagli stipendi d'oro",
+   "w": 1
+  },
+  {
    "src": "Corriere della Sera",
    "text": "Il generale Eisenkot, leader dell'opposizione in Israele: il dolore di un padre e la corsa elettorale contro Netanyahu",
    "w": 1
   },
   {
-   "src": "Open",
-   "text": "Una statua di Donald Trump nudo è stata esposta al Parlamento Ue",
+   "src": "Ravenna Notizie",
+   "text": "Attaccata e semiaffondata nel Mar Nero una nave diretta a Ravenna: due morti, tra cui il comandante",
+   "w": 0.3
+  },
+  {
+   "src": "Il Fatto Quotidiano",
+   "text": "Trump nudo e dorato a Strasburgo: l'Europarlamento scopre che l'imperatore è nudo, ma almeno è a 23 carati",
    "w": 1
   },
   {
@@ -7852,8 +7852,23 @@
    "w": 1
   },
   {
-   "src": "Open",
-   "text": "«Mosca farà vittime in Europa». Il vertice segreto a Bruxelles e il «protocollo d'emergenza» contro gli attacchi russi",
+   "src": "ANSA",
+   "text": "Trump attacca El-Sayed, 'un estremista e simpatizzante dei terroristi'",
+   "w": 1
+  },
+  {
+   "src": "Tgcom24",
+   "text": "Germania, il flusso di soldi e quei duemila documenti top secret: ecco come la super-talpa negli 007 faceva il doppio gioco",
+   "w": 1
+  },
+  {
+   "src": "Virgilio",
+   "text": "La minaccia degli attacchi ibridi della Russia spaventa l'Ue, \"dobbiamo essere preparati a qualcosa di grave\"",
+   "w": 0.3
+  },
+  {
+   "src": "Il Post",
+   "text": "Un fotografo palestinese è stato aggredito dai coloni israeliani in Cisgiordania",
    "w": 1
   },
   {
@@ -7862,23 +7877,13 @@
    "w": 0.3
   },
   {
-   "src": "Open",
-   "text": "La storica disputa tra Atene e Londra per i Marmi del Partenone, la Grecia sfida il British Museum: «Ce li restituisca",
+   "src": "Il Fatto Quotidiano",
+   "text": "Rubio: “L'Iran ha perso il controllo totale dello Stretto di Hormuz”. Teheran: “Bloccheremo le rotte di transito illegali”",
    "w": 1
   },
   {
-   "src": "Euronews.com",
-   "text": "Marco Rubio: \"L'Iran ha perso completamente il controllo dello stretto di Hormuz\"",
-   "w": 0.3
-  },
-  {
-   "src": "Open",
-   "text": "Usa l'intelligenza artificiale per pianificare l'escursione, 16enne rimane bloccato su un dirupo: recuperato dai soccorritori",
-   "w": 1
-  },
-  {
-   "src": "Open",
-   "text": "Costretta a mettere il velo e la gonna per andare in onda, il racconto di Elena Testi su La7 dopo l'aggressione al quartiere ebraico di Mea Shearim - Il video",
+   "src": "Il Messaggero",
+   "text": "Elena Testi, giornalista di La7, aggredita a Gerusalemme e costretta a indossare il velo: «Mi continuavano a dire donna di facili costumi»",
    "w": 1
   },
   {
@@ -7892,19 +7897,9 @@
    "w": 1
   },
   {
-   "src": "Open",
-   "text": "La puzza in cabina, i passeggeri stanno male sul volo sul Dublino-Newark. Il capitano deve atterrare in sovraccarico: cosa è successo",
-   "w": 1
-  },
-  {
    "src": "Europa Today",
    "text": "Sgozza l'animale domestico della compagna davanti a lei: \"Così impari la lezione\". Poi lo cucina e la costringe a mangiarlo",
    "w": 0.3
-  },
-  {
-   "src": "Corriere della Sera",
-   "text": "Mps, anche Caltagirone e i Benetton si schierano con Intesa Sanpaolo: ora più in salita il contro-piano di Siena",
-   "w": 1
   },
   {
    "src": "Sky TG24",
@@ -7922,6 +7917,11 @@
    "w": 1
   },
   {
+   "src": "Il Fatto Quotidiano",
+   "text": "Data center, miliardi di investimenti e briciole ai territori: il boom dell'IA in un contesto normativo inesistente. Le analisi dal Politecnico sugli impatti",
+   "w": 1
+  },
+  {
    "src": "Sky TG24",
    "text": "Soldi in banca, chi ne ha di più? I dati di Regioni e province",
    "w": 1
@@ -7932,14 +7932,14 @@
    "w": 1
   },
   {
-   "src": "Il Fatto Quotidiano",
-   "text": "Data center, miliardi di investimenti e briciole ai territori: il boom dell'IA in un contesto normativo inesistente. Le analisi dal Politecnico sugli impatti",
-   "w": 1
-  },
-  {
    "src": "Bluerating.com",
    "text": "Aumento dei rendimenti obbligazionari: cosa insegna la storia ai mercati azionari",
    "w": 0.3
+  },
+  {
+   "src": "la Repubblica",
+   "text": "Mps, Caltagirone voterà contro il piano di Lovaglio in assemblea",
+   "w": 1
   },
   {
    "src": "Sky TG24",
@@ -8095,11 +8095,6 @@
    "src": "Corriere di Bologna",
    "text": "Emilia-Romagna, le migliori aziende dove lavorare in regione: nella classifica delle prime 450 sul podio c'è Coesia, poi Granarolo e Barilla",
    "w": 0.3
-  },
-  {
-   "src": "Il Sole 24 ORE",
-   "text": "Aeroporti, la classifica Airhelp: Cagliari il migliore scalo, Orio al Serio il peggior",
-   "w": 1
   },
   {
    "src": "ANSA",
@@ -8438,12 +8433,12 @@
   },
   {
    "src": "HDblog.it",
-   "text": "Samsung SmartTag 3 funziona con iPhone ma non con Pixel e gli altri: il chiarimento",
+   "text": "Windows 11, il Patch Tuesday di ottobre sarà molto ricco: ecco le novità",
    "w": 0.3
   },
   {
    "src": "HDblog.it",
-   "text": "Windows 11, il Patch Tuesday di ottobre sarà molto ricco: ecco le novità",
+   "text": "Samsung SmartTag 3 funziona con iPhone ma non con Pixel e gli altri: il chiarimento",
    "w": 0.3
   },
   {
@@ -8532,8 +8527,8 @@
    "w": 0.3
   },
   {
-   "src": "TecnoAndroid",
-   "text": "Apple Arcade, cinque nuovi giochi: arriva anche Terraria+",
+   "src": "Quotazioni, Borsa, Economia e Finanza",
+   "text": "Borsa Asia in calo, bond travolti da ondata debito IA Da Reuters - Investing.com",
    "w": 0.3
   },
   {
@@ -8717,14 +8712,14 @@
    "w": 1
   },
   {
-   "src": "DiLei",
-   "text": "Sandra Bullock, il ranch venduto a 5.6 milioni (il doppio del suo prezzo)",
-   "w": 0.3
-  },
-  {
    "src": "Vanity Fair Italia",
    "text": "Gli amori segreti, i tradimenti, il dolore per il figlio finito in carcere per droga: tutte le rivelazioni nel nuovo memoir di Michael Douglas",
    "w": 1
+  },
+  {
+   "src": "DiLei",
+   "text": "Sandra Bullock, il ranch venduto a 5.6 milioni (il doppio del suo prezzo)",
+   "w": 0.3
   },
   {
    "src": "DiLei",
@@ -8842,6 +8837,11 @@
    "w": 1
   },
   {
+   "src": "Sportmediaset",
+   "text": "MotoGp, Dall'Igna: \"Se qualcuno deve batterci, che sia Aprilia. Marquez ci sprona\"",
+   "w": 0.3
+  },
+  {
    "src": "Sky Sport",
    "text": "MotoGP in Indonesia: la conferenza di Dall'Igna e Rivola e quella dei piloti in diretta LIVE",
    "w": 0.3
@@ -8857,18 +8857,13 @@
    "w": 0.3
   },
   {
-   "src": "La Stampa",
-   "text": "Il Gran Piemonte arriva a Bra, fra i partenti c'è il campione del mondo",
-   "w": 1
-  },
-  {
-   "src": "Sportmediaset",
-   "text": "Milan, Amorim: \"I gol di Ramos arriveranno, il mercato pensato per il presente e il futuro\"",
+   "src": "Sky Sport",
+   "text": "Alonso: 'Bug software, che non accada più'",
    "w": 0.3
   },
   {
-   "src": "Sky TG24",
-   "text": "Stefania Corna, il 9 ottobre previsti i funerali dell'ex pallavolista morta a 35 anni",
+   "src": "Corriere della Sera",
+   "text": "Stefania Corna, chi era la pallavolista morta a 35 anni: rispondendo a un volantino arrivò in Nazionale",
    "w": 1
   },
   {
@@ -8882,29 +8877,24 @@
    "w": 0.3
   },
   {
-   "src": "La Gazzetta dello Sport",
-   "text": "Inter, Lautaro verrà gestito contro il Parma. Ballottaggio tra Martinez e Provedel",
-   "w": 1
-  },
-  {
-   "src": "Corriere dello Sport",
-   "text": "L'emozionante lettera social di Messi: Cristiano Ronaldo risponde con un messaggio bellissimo",
-   "w": 1
-  },
-  {
-   "src": "Fantacalcio",
-   "text": "Bologna, rientrati tutti i Nazionali: Odgaard ancora a parte",
+   "src": "Eurosport.it",
+   "text": "Ferrero: \"Chiudere la porta a Sinner sarebbe una follia. Alcaraz? Ci sono amicizie pericolose...\"",
    "w": 0.3
   },
   {
    "src": "Sky Sport",
-   "text": "Alonso: 'Bug software, che non accada più'",
+   "text": "Inter, torna Calhanoglu. Chance per Mkhitaryan e Provedel",
    "w": 0.3
   },
   {
-   "src": "SOS Fanta",
-   "text": "BREAKING - Napoli, ecco l'esito dell'esame per l'idoneità sportiva di McTominay e cosa filtra per il Frosinone",
-   "w": 0.3
+   "src": "RaiNews",
+   "text": "L'ultimo tango di Messi con l'Argentina, la \"Pulce\" saluta la nazionale con un gol e due assist",
+   "w": 1
+  },
+  {
+   "src": "la Repubblica",
+   "text": "La ricreazione è finita: così la Serie A prepara il ritorno",
+   "w": 1
   },
   {
    "src": "Sportmediaset",
@@ -8917,13 +8907,48 @@
    "w": 0.3
   },
   {
-   "src": "Goal.com",
-   "text": "Probabili formazioni Serie A, giornata 6: tornano titolari Kolo Muani, Calhanoglu e Orsolini, dubbi su Lautaro e Wesley, riecco Meret e McTominay, ballottaggi Moreira-Cisse, Musah-Modric e Alajbegovic-Zhegrova, Davis c'è, out Jones",
+   "src": "Eurosport.it",
+   "text": "Napoli, ecco una buona notizia: McTominay può tornare a giocare dopo l'aritmia",
    "w": 0.3
+  },
+  {
+   "src": "Calciomercato",
+   "text": "Juventus, in arrivo il rinnovo di Nico Gonzalez: la durata e le cifre del nuovo ingaggio",
+   "w": 0.3
+  },
+  {
+   "src": "Motorsport.com",
+   "text": "F1 | Red Bull, Hodgkinson celebra l'impresa RBPT: “Cinque anni fa era solo un'idea”",
+   "w": 0.3
+  },
+  {
+   "src": "Corriere dello Sport",
+   "text": "Caso Cristiano Ronaldo, i giocatori del Portogallo contro di lui? L'indizio social fa discutere",
+   "w": 1
   },
   {
    "src": "Il portale della vela",
    "text": "Barcolana 58, i giorni corrono: arriva il Vespucci, 1700 iscritti, colpo di Bora venerdi e previsioni per il weekend - Saily",
+   "w": 0.3
+  },
+  {
+   "src": "Corriere dello Sport",
+   "text": "Roma, la storia chiama: vincere a Como per mandare un altro messaggio",
+   "w": 1
+  },
+  {
+   "src": "la Repubblica",
+   "text": "Modulo, portieri, infortuni: il lavoro di Palladino per sistemare la difesa del Bologna",
+   "w": 1
+  },
+  {
+   "src": "MyValley.it notizie!",
+   "text": "World Skate Games: il nossese Marzella a caccia di una medaglia in Paraguay",
+   "w": 0.3
+  },
+  {
+   "src": "Hellas Live",
+   "text": "Serie BKT 2026/27. Modena-Hellas Verona, venduti ad ora 1900 biglietti del Settore Ospiti",
    "w": 0.3
   },
   {
@@ -8932,9 +8957,14 @@
    "w": 1
   },
   {
-   "src": "SOS Fanta",
-   "text": "Da Anguissa ad Alisson Santos, chi recupera nel Napoli. In porta tra Meret e Milinkovic...",
-   "w": 0.3
+   "src": "La Gazzetta dello Sport",
+   "text": "Il Napoli a quota 6, alla Juve ne mancheranno 3, mentre la Roma... Gli infortuni muscolari delle 20 di A",
+   "w": 1
+  },
+  {
+   "src": "Il Fatto Quotidiano",
+   "text": "\"Ndour mi aveva raccontato una cosa prima di venire in ritiro, è stata proprio quella a regalargli un gol che nessuno scorderà\": parla Silvio Baldini",
+   "w": 1
   },
   {
    "src": "Corriere della Sera",
@@ -8952,11 +8982,6 @@
    "w": 1
   },
   {
-   "src": "Il Fatto Quotidiano",
-   "text": "Cristiano Ronaldo svela tutto, il “tradimento” di Jorge Jesus e l'addio Portogallo: “Questa è, credetemi, la pura verità”",
-   "w": 1
-  },
-  {
    "src": "La Prealpina",
    "text": "Varese, l'Europa è amarissima: Murcia la strapazza 85-58",
    "w": 0.3
@@ -8969,16 +8994,6 @@
   {
    "src": "Toro News",
    "text": "La \"clinica\" svizzera rigenera Rodriguez: un nuovo titolare per Abate?",
-   "w": 0.3
-  },
-  {
-   "src": "Corriere della Sera",
-   "text": "Ferrero si candida per allenare Sinner: «Non sarebbe un dispetto ad Alcaraz, Jannik nei numeri è superiore»",
-   "w": 1
-  },
-  {
-   "src": "Antenna Sud",
-   "text": "SS. Taranto-Comune, scontro su Hospitality dello Iacovone",
    "w": 0.3
   },
   {
@@ -9002,9 +9017,9 @@
    "w": 0.3
   },
   {
-   "src": "La Gazzetta dello Sport",
-   "text": "Napoli, lesione per Vergara: il comunicato del Napoli con l'esito degli esami",
-   "w": 1
+   "src": "SOS Fanta",
+   "text": "Napoli, tutto sull'infortunio di Vergara: quanto dovrà stare fuori e quante partite salterà in campionato",
+   "w": 0.3
   },
   {
    "src": "Sky Sport",
@@ -9032,16 +9047,6 @@
    "w": 0.3
   },
   {
-   "src": "Corriere dello Sport",
-   "text": "Gli attaccanti della Juve steccano, David stupisce il mondo: l'Atletico pronto a riscattarlo per 25 milioni",
-   "w": 1
-  },
-  {
-   "src": "la Repubblica",
-   "text": "Nations League, Spagna ai quarti. Inghilterra, Kane festeggia il record con una doppietta",
-   "w": 1
-  },
-  {
    "src": "Corriere del Trentino",
    "text": "Il commesso di una ferramenta che ha corso 650 chilometri in 195 ore: «Ho fatto 44mila metri di dislivello, alla fine ho perso 7 chili. L'allenamento? Alle 3.30 prima di andare a lavoro»",
    "w": 0.3
@@ -9049,11 +9054,6 @@
   {
    "src": "Calcio e Finanza",
    "text": "Lo stipendio di Lotito alla Lazio: le cifre ufficiali della stagione 2025/26",
-   "w": 0.3
-  },
-  {
-   "src": "AutoRacer.it",
-   "text": "Ferrari, Hamilton costruisce il suo gruppo e allarga il consenso sul metodo",
    "w": 0.3
   },
   {
@@ -9082,9 +9082,14 @@
    "w": 0.3
   },
   {
-   "src": "SOS Fanta",
-   "text": "Sette scambi da rifiutare al fantacalcio: da Berardi e Pinamonti a Zaccagni, Orsolini, Molina e Carlos Augusto",
+   "src": "Corriere di Bologna",
+   "text": "Eugenio Benuzzi, morto a 68 anni «il mister» più vincente: «Dai campi di provincia fino ai professionisti»",
    "w": 0.3
+  },
+  {
+   "src": "Vanity Fair Italia",
+   "text": "Cristian Totti e la diagnosi di stenosi dell'acquedotto di Silvio: di che cosa si tratta, che cosa comporta, come si risolve",
+   "w": 1
   },
   {
    "src": "RaiNews",
@@ -9147,13 +9152,18 @@
    "w": 0.3
   },
   {
-   "src": "Il Fatto Quotidiano",
-   "text": "Specie selvatiche in declino: -73% in 50 anni. In Italia segnali positivi per cervo sardo e lupo. Wwf: \"Ma il 30% dei vertebrati è a rischio estinzione\"",
-   "w": 1
+   "src": "L'Arena",
+   "text": "Verona dedica un'intera settimana a promozione e benessere psicologico e al contrasto dello stigma",
+   "w": 0.3
   },
   {
    "src": "MeteoLive",
    "text": "Temporale in arrivo su Napoli a mezzogiorno",
+   "w": 0.3
+  },
+  {
+   "src": "Mondosanità",
+   "text": "Con l'età si allungano anche i lipidi nelle cellule: scoperto un nuovo segnale dell'invecchiamento",
    "w": 0.3
   },
   {
@@ -9179,11 +9189,6 @@
   {
    "src": "Il Giornale di Vicenza",
    "text": "Schio, al via il Festival della scienza: «Sarà un evento diffuso»",
-   "w": 0.3
-  },
-  {
-   "src": "MeteoLive",
-   "text": "Prima neve sulle alture di Livigno",
    "w": 0.3
   },
   {
@@ -9317,11 +9322,6 @@
    "w": 0.3
   },
   {
-   "src": "Messaggero Veneto",
-   "text": "Come governare l'intelligenza artificiale tra opportunità e etica: a Tavagnacco torna l'Ai Forum",
-   "w": 0.3
-  },
-  {
    "src": "Civonline",
    "text": "Tarquinia si conta: al via il Censimento permanente della popolazione 2026 nell'anno del Centenario Istat",
    "w": 0.3
@@ -9362,14 +9362,14 @@
    "w": 1
   },
   {
-   "src": "Libero Quotidiano",
-   "text": "Dopo un trauma il cervello resta in allerta: cosa succede dopo un forte stress | Libero Quotidiano.it",
-   "w": 1
-  },
-  {
    "src": "Hardware Upgrade",
    "text": "Terre rare dagli scarichi: la ricerca sui materiali porosi punta al recupero selettivo",
    "w": 0.3
+  },
+  {
+   "src": "Libero Quotidiano",
+   "text": "Dopo un trauma il cervello resta in allerta: cosa succede dopo un forte stress | Libero Quotidiano.it",
+   "w": 1
   },
   {
    "src": "la Repubblica",
@@ -9502,6 +9502,11 @@
    "w": 0.3
   },
   {
+   "src": "il Giornale",
+   "text": "Vitamina D in autunno, sei alimenti per farne il pieno a tavola",
+   "w": 1
+  },
+  {
    "src": "Mondosanità",
    "text": "Dopo i 65 anni, la bilancia non racconta tutta la storia",
    "w": 0.3
@@ -9528,11 +9533,6 @@
   },
   {
    "src": "Mondosanità",
-   "text": "Con l'età si allungano anche i lipidi nelle cellule: scoperto un nuovo segnale dell'invecchiamento",
-   "w": 0.3
-  },
-  {
-   "src": "Mondosanità",
    "text": "Fumo, quando nemmeno un infarto basta a smettere: il dibattito sul tabacco riscaldato",
    "w": 0.3
   },
@@ -9555,11 +9555,6 @@
    "src": "My-personaltrainer",
    "text": "Pochissime calorie e una miniera di antiossidanti: l'alleato viola per l'intestino che dovresti preparare così",
    "w": 0.3
-  },
-  {
-   "src": "il Giornale",
-   "text": "Vitamina D in autunno, sei alimenti per farne il pieno a tavola",
-   "w": 1
   },
   {
    "src": "Il Tirreno",
@@ -9777,6 +9772,13 @@
   },
   {
    "src": "Коммерсантъ, Russia",
+   "text": "Insoddisfatta delle scuse, la Corea del Sud ha richiamato l'ambasciatore dall'Ucraina",
+   "orig": "Не удовлетворенная извинениями Южная Корея отозвала посла с Украины",
+   "w": 0.25,
+   "tr": true
+  },
+  {
+   "src": "Коммерсантъ, Russia",
    "text": "Due feriti in una sparatoria in Baviera",
    "orig": "Два человека пострадали при стрельбе в Баварии",
    "w": 0.25,
@@ -9797,37 +9799,44 @@
    "tr": true
   },
   {
-   "src": "Коммерсантъ, Russia",
-   "text": "Il ministero degli Esteri bielorusso ha definito l'attacco UAV vicino a Bryansk un tentativo di coinvolgere il paese nel conflitto",
-   "orig": "МИД Белоруссии назвал атаку БПЛА под Брянском попыткой вовлечь страну в конфликт",
+   "src": "The Hindu, India",
+   "text": "Il Congresso organizza una protesta a Kalaburagi per la detenzione di Mallikarjun Kharge, Rahul Gandhi e Priyanka Gandhi",
+   "orig": "Congress stages protest in Kalaburagi over detention of Mallikarjun Kharge, Rahul Gandhi and Priyanka Gandhi",
    "w": 0.25,
    "tr": true
   },
   {
    "src": "The Hindu, India",
-   "text": "I lavoratori a contratto chiedono l'attuazione dei salari minimi rivisti",
-   "orig": "Contract workers seek implementation of revised minimum wages",
+   "text": "Il nuotatore del Palakkad del Keralam vince sette medaglie per la CISF all'incontro acquatico della polizia nazionale",
+   "orig": "Swimmer from Keralam's Palakkad bags seven medals for CISF at national police aquatic meet",
    "w": 0.25,
    "tr": true
   },
   {
    "src": "The Hindu, India",
-   "text": "Restrizioni al traffico sulla strada principale di Basava Nagar dal 10 ottobre",
-   "orig": "Traffic restrictions on Basava Nagar Main Road from October 10",
+   "text": "RBI rimuove Paytm Payments Bank dall'elenco delle banche programmate",
+   "orig": "RBI removes Paytm Payments Bank from list of scheduled banks",
    "w": 0.25,
    "tr": true
   },
   {
    "src": "The Hindu, India",
-   "text": "Giornata mondiale della vista: il campo di sensibilizzazione sul glaucoma per anziani si tiene a Srikakulam il",
-   "orig": "World Sight Day: glaucoma awareness camp for elderly held in Srikakulam on",
+   "text": "Il nuovo quadro di accreditamento di NAAC per dare priorità ai risultati rispetto agli input",
+   "orig": "NAAC's new accreditation framework to prioritise outcomes over inputs",
    "w": 0.25,
    "tr": true
   },
   {
-   "src": "The Hindu, India",
-   "text": "Le autorità universitarie di Calicut esplorano le opzioni legali sull'ordine HC",
-   "orig": "Calicut varsity authorities exploring legal options on HC order",
+   "src": "Folha de S.Paulo, Brasile",
+   "text": "C gobba della Polizia Federale se sei con Alexandre de Moraes dopo 1 turno",
+   "orig": "C�pula da Pol�cia Federal se re�ne com Alexandre de Moraes ap�s 1� turno",
+   "w": 0.25,
+   "tr": true
+  },
+  {
+   "src": "Folha de S.Paulo, Brasile",
+   "text": "Itamaraty ignora lapropria graduatorianellapromozione dei diplomatici",
+   "orig": "Itamaraty ignora sua pr�pria lista classificat�ria em promo��o de diplomatas",
    "w": 0.25,
    "tr": true
   },
@@ -9842,20 +9851,6 @@
    "src": "Folha de S.Paulo, Brasile",
    "text": "Giudice trovato carbonizzato all'interno di un'auto a São João da Boa Vista (SP)",
    "orig": "Juiz � encontrado carbonizado dentro de carro em S�o Jo�o da Boa Vista (SP)",
-   "w": 0.25,
-   "tr": true
-  },
-  {
-   "src": "Folha de S.Paulo, Brasile",
-   "text": "Lula riprendela campagna con camminata in DF 5 giorni dopo il primo turno",
-   "orig": "Lula retomar� campanha com caminhada no DF 5 dias depois do primeiro turno",
-   "w": 0.25,
-   "tr": true
-  },
-  {
-   "src": "Folha de S.Paulo, Brasile",
-   "text": "Il giorno mostra perché difcil produce farmaci ricchidi gen",
-   "orig": "�ndia mostra por que � dif�cil produzir medicamentos gen�ricos",
    "w": 0.25,
    "tr": true
   },
@@ -10078,6 +10073,13 @@
   },
   {
    "src": "الشرق الأوسط, Arabia Saudita",
+   "text": "Teheran alza la sua retorica contro le minacce statunitensi",
+   "orig": "طهران ترفع لهجتها ضد التهديدات الأميركية",
+   "w": 0.25,
+   "tr": true
+  },
+  {
+   "src": "الشرق الأوسط, Arabia Saudita",
    "text": "L'Autorità palestinese respinge l'attacco israeliano al consolato britannico a Gerusalemme",
    "orig": "السلطة الفلسطينية ترفض استهداف إسرائيل للقنصلية البريطانية في القدس",
    "w": 0.25,
@@ -10094,13 +10096,6 @@
    "src": "الشرق الأوسط, Arabia Saudita",
    "text": "Il governo del Giappone abbandona la retorica dell'iperstimolo",
    "orig": "حكومة اليابان تتخلى عن خطاب التحفيز المفرط",
-   "w": 0.25,
-   "tr": true
-  },
-  {
-   "src": "الشرق الأوسط, Arabia Saudita",
-   "text": "L'aereo di soccorso saudita arriva in Nepal",
-   "orig": "وصول طائرة إغاثية سعودية إلى نيبال",
    "w": 0.25,
    "tr": true
   },
@@ -10378,7 +10373,7 @@
    "src": "Le Monde",
    "country": "Francia",
    "lang": "fr",
-   "text": "Espagne : comment expliquer la crise du logement ?"
+   "text": "Les entraves à la libre circulation au sein de l'espace Schengen se multiplient"
   },
   {
    "src": "Le Monde",
@@ -10390,19 +10385,19 @@
    "src": "Le Monde",
    "country": "Francia",
    "lang": "fr",
-   "text": "« Dividende Trump » : promettre un chèque en cas de victoire, une stratégie électorale efficace ?"
-  },
-  {
-   "src": "Le Monde",
-   "country": "Francia",
-   "lang": "fr",
    "text": "A Paris, des sans-abri évacués et relogés lors d'une opération conjointe entre la Mairie et l'Etat"
   },
   {
    "src": "Le Monde",
    "country": "Francia",
    "lang": "fr",
-   "text": "A la première du « Legend Tour », un public conquis d'avance malgré les polémiques visant Guillaume Pley"
+   "text": "Rodrigo Duterte, ancien président des Philippines, déclaré apte à être jugé par la CPI pour crime contre l'humanité"
+  },
+  {
+   "src": "Le Monde",
+   "country": "Francia",
+   "lang": "fr",
+   "text": "Au Japon, le meurtre d'une habitante d'Okinawa par un marine ravive la défiance envers la présence militaire américaine"
   },
   {
    "src": "Der Spiegel",
@@ -10768,6 +10763,12 @@
    "src": "Коммерсантъ",
    "country": "Russia",
    "lang": "ru",
+   "text": "Не удовлетворенная извинениями Южная Корея отозвала посла с Украины"
+  },
+  {
+   "src": "Коммерсантъ",
+   "country": "Russia",
+   "lang": "ru",
    "text": "Два человека пострадали при стрельбе в Баварии"
   },
   {
@@ -10822,7 +10823,7 @@
    "src": "Коммерсантъ",
    "country": "Russia",
    "lang": "ru",
-   "text": "В Рунете произошел масштабный сбой"
+   "text": "В рунете произошел масштабный сбой"
   },
   {
    "src": "Коммерсантъ",
@@ -10849,10 +10850,52 @@
    "text": "Рамон Вега первым бросил вызов Джанни Инфантино на президентских выборах"
   },
   {
-   "src": "Коммерсантъ",
-   "country": "Russia",
-   "lang": "ru",
-   "text": "МЧС предложило привлекать военных из запаса для тушения пожаров после атак ВСУ"
+   "src": "The Hindu",
+   "country": "India",
+   "lang": "en",
+   "text": "Congress stages protest in Kalaburagi over detention of Mallikarjun Kharge, Rahul Gandhi and Priyanka Gandhi"
+  },
+  {
+   "src": "The Hindu",
+   "country": "India",
+   "lang": "en",
+   "text": "Swimmer from Keralam's Palakkad bags seven medals for CISF at national police aquatic meet"
+  },
+  {
+   "src": "The Hindu",
+   "country": "India",
+   "lang": "en",
+   "text": "RBI removes Paytm Payments Bank from list of scheduled banks"
+  },
+  {
+   "src": "The Hindu",
+   "country": "India",
+   "lang": "en",
+   "text": "NAAC's new accreditation framework to prioritise outcomes over inputs"
+  },
+  {
+   "src": "The Hindu",
+   "country": "India",
+   "lang": "en",
+   "text": "Contraflow bus lanes, pick-ups and drops at office premises suggested at mobility symposium"
+  },
+  {
+   "src": "The Hindu",
+   "country": "India",
+   "lang": "en",
+   "text": "GM University researcher named among world's top 2% of scientists"
+  },
+  {
+   "src": "The Hindu",
+   "country": "India",
+   "lang": "en",
+   "text": "SIR: Dhruv Rathee, CJP founder Abhijeet Dipke join 'People's Tribunal' in Bengaluru"
+  },
+  {
+   "src": "The Hindu",
+   "country": "India",
+   "lang": "en",
+   "text": "SC directs Centre to form expert panel to regulate unethical pharma marketing"
   },
   {
    "src": "The Hindu",
@@ -10897,52 +10940,16 @@
    "text": "Delhi Police ramp up 'perception' campaign, identifies 500 people, 200 social media channels ahead of October 10 protest"
   },
   {
-   "src": "The Hindu",
-   "country": "India",
-   "lang": "en",
-   "text": "Nana Patekar passes away: Leaders, film fraternity mourn actor's death | LIVE updates"
+   "src": "Folha de S.Paulo",
+   "country": "Brasile",
+   "lang": "pt",
+   "text": "C�pula da Pol�cia Federal se re�ne com Alexandre de Moraes ap�s 1� turno"
   },
   {
-   "src": "The Hindu",
-   "country": "India",
-   "lang": "en",
-   "text": "Take tough stance on encroachers of temple properties: Tamil Nadu Minister"
-  },
-  {
-   "src": "The Hindu",
-   "country": "India",
-   "lang": "en",
-   "text": "Alleged violation of food safety norms: eatery in Keralam's Kozhikode fined ₹1 lakh"
-  },
-  {
-   "src": "The Hindu",
-   "country": "India",
-   "lang": "en",
-   "text": "Thirumavalavan's statements on SIR sends mixed signal to cadre, party leaders in Tamil Nadu"
-  },
-  {
-   "src": "The Hindu",
-   "country": "India",
-   "lang": "en",
-   "text": "Police arrest a drug peddler who pretended to be a journalist"
-  },
-  {
-   "src": "The Hindu",
-   "country": "India",
-   "lang": "en",
-   "text": "DLSA Secretary calls for wider student awareness on Dowry Prohibition Act"
-  },
-  {
-   "src": "The Hindu",
-   "country": "India",
-   "lang": "en",
-   "text": "JSS STU-Bajaj initiative to train 720 youth in three years"
-  },
-  {
-   "src": "The Hindu",
-   "country": "India",
-   "lang": "en",
-   "text": "After speculation over political appointees, government to send senior career officer to Kathmandu"
+   "src": "Folha de S.Paulo",
+   "country": "Brasile",
+   "lang": "pt",
+   "text": "Itamaraty ignora sua pr�pria lista classificat�ria em promo��o de diplomatas"
   },
   {
    "src": "Folha de S.Paulo",
@@ -11020,19 +11027,7 @@
    "src": "Folha de S.Paulo",
    "country": "Brasile",
    "lang": "pt",
-   "text": "Relator do TSE vota por anular votos de Garotinho no RJ e abre caminho para vit�ria de Ruas em 1� turno"
-  },
-  {
-   "src": "Folha de S.Paulo",
-   "country": "Brasile",
-   "lang": "pt",
-   "text": "Fl�vio Bolsonaro defende que fim da reelei��o se aplique a seu mandato e fala em veto a Jair em 2030"
-  },
-  {
-   "src": "Folha de S.Paulo",
-   "country": "Brasile",
-   "lang": "pt",
-   "text": "Podemos confirma apoio a Fl�vio Bolsonaro, que soma alian�a com 5 partidos no segundo turno"
+   "text": "TSE tem 2 votos a 0 para anular votos de Garotinho no RJ e abre caminho para vit�ria de Ruas em 1� turno"
   },
   {
    "src": "Clarín",
@@ -11365,16 +11360,16 @@
    "text": "Another NASA crew is coming home. Here's what to expect from their splashdown"
   },
   {
-   "src": "eNCA",
-   "country": "Sudafrica",
-   "lang": "en",
-   "text": "Tensions flare as refugee centres reopen for asylum applications"
-  },
-  {
    "src": "BusinessTech",
    "country": "Sudafrica",
    "lang": "en",
    "text": "Zuma rushed to hospital, and new BEE laws ruled invalid in South Africa"
+  },
+  {
+   "src": "eNCA",
+   "country": "Sudafrica",
+   "lang": "en",
+   "text": "Tensions flare as refugee centres reopen for asylum applications"
   },
   {
    "src": "News24",
@@ -11389,16 +11384,16 @@
    "text": "Kingdom of Eswatini denies releasing US deportees to South Africa"
   },
   {
+   "src": "Daily Sun",
+   "country": "Sudafrica",
+   "lang": "en",
+   "text": "Shebeshxt: I was framed!"
+  },
+  {
    "src": "Daily Maverick",
    "country": "Sudafrica",
    "lang": "en",
    "text": "Fixing Joburg starts with turning it into a municipality once more"
-  },
-  {
-   "src": "TimesLIVE",
-   "country": "Sudafrica",
-   "lang": "en",
-   "text": "Feroz Khan's relative being buried today after R21 shooting"
   },
   {
    "src": "Daily Voice",
@@ -11728,6 +11723,12 @@
    "src": "الشرق الأوسط",
    "country": "Arabia Saudita",
    "lang": "ar",
+   "text": "طهران ترفع لهجتها ضد التهديدات الأميركية"
+  },
+  {
+   "src": "الشرق الأوسط",
+   "country": "Arabia Saudita",
+   "lang": "ar",
    "text": "السلطة الفلسطينية ترفض استهداف إسرائيل للقنصلية البريطانية في القدس"
   },
   {
@@ -11807,12 +11808,6 @@
    "country": "Arabia Saudita",
    "lang": "ar",
    "text": "تقرير الحالة الثقافية... مشاركة ثقافية تبلغ 70 % وترسيخ لاقتصاد الثقافة"
-  },
-  {
-   "src": "الشرق الأوسط",
-   "country": "Arabia Saudita",
-   "lang": "ar",
-   "text": "رسمياً... الفتح يقيل مدربه خالد العطوي"
   },
   {
    "src": "Politico Europe",
