@@ -1,0 +1,49 @@
+name: Aggiorna notizie
+
+on:
+  schedule:
+    - cron: "47 3,9,15 * * *"   # circa alle 6, 12 e 18 in Italia (ora legale; un'ora prima d'inverno)
+  workflow_dispatch:            # pulsante "Run workflow" per lanciarlo a mano
+  push:
+    branches: [main]
+
+permissions:
+  contents: write     # per salvare news.json e l'archivio nel progetto
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  aggiorna:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Scarica i titoli dei giornali
+        run: node scripts/fetch-news.mjs
+        env:
+          DEEPL_KEY: ${{ secrets.DEEPL_KEY }}
+      - name: Salva le notizie nel progetto
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add news.json
+          if [ -d archivio ]; then git add archivio; fi
+          if ! git diff --cached --quiet; then
+            git commit -m "Notizie del $(TZ=Europe/Rome date +%F) alle $(TZ=Europe/Rome date +%H:%M)"
+            git pull --rebase --autostash && git push || echo "Salvataggio nel progetto non riuscito: la pagina viene pubblicata lo stesso"
+          fi
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+      - id: deploy
+        uses: actions/deploy-pages@v4
