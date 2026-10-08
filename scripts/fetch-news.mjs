@@ -130,6 +130,68 @@ if (items.length < MIN_TOTAL){
   await writeFile("news.json", data);
   await mkdir("archivio", { recursive: true });
   const day = now.toLocaleDateString("sv-SE", { timeZone: "Europe/Rome" });   // AAAA-MM-GG, ora italiana
+  const dayIt = now.toLocaleDateString("it-IT", { timeZone: "Europe/Rome", day: "numeric", month: "long", year: "numeric" });
+  const hour = now.toLocaleTimeString("it-IT", { timeZone: "Europe/Rome", hour: "2-digit", minute: "2-digit" });
+  const BOM = "﻿";   // perché il browser legga bene le lettere accentate
   await writeFile(`archivio/${day}.json`, data);
-  console.log(`news.json aggiornato e archiviato in archivio/${day}.json`);
+  await writeFile(`archivio/${day}-titoli.txt`, BOM + titlesText(items, translated, fx, dayIt, hour));
+  await writeFile(`archivio/${day}-poesie.txt`, BOM + poemsText(items, translated, fx, dayIt, hour));
+  console.log(`news.json aggiornato; in archivio: ${day}.json, ${day}-titoli.txt, ${day}-poesie.txt`);
+}
+
+/* ---------- archivio leggibile ---------- */
+function titlesText(items, translated, fx, dayIt, hour){
+  const del = /^(8|11) /.test(dayIt) ? "dell'" : "del ";
+  const L = [`POESIA LA NOTIZIA — titoli ${del}${dayIt}, aggiornati alle ${hour}`, ""];
+  const by = new Map();
+  items.forEach(i => { if (!by.has(i.src)) by.set(i.src, []); by.get(i.src).push(i.text); });
+  L.push(`${items.length} titoli italiani da ${by.size} testate`, "");
+  [...by.keys()].sort((a, b) => a.localeCompare(b, "it")).forEach(src => {
+    L.push(src.toUpperCase()); by.get(src).forEach(t => L.push("  " + t)); L.push("");
+  });
+  if (fx.length){
+    L.push("", "STAMPA ESTERA", "");
+    const byC = new Map();
+    fx.forEach(i => { if (!byC.has(i.country)) byC.set(i.country, []); byC.get(i.country).push(i); });
+    const tr = new Map(translated.map(t => [t.orig, t.text]));
+    for (const [c, arr] of byC){
+      L.push(`${c.toUpperCase()} — ${arr[0].src}`);
+      arr.forEach(i => { L.push("  " + i.text); if (tr.has(i.text)) L.push("    → " + tr.get(i.text)); });
+      L.push("");
+    }
+  }
+  return L.join("\n");
+}
+
+function poemsText(items, translated, fx, dayIt, hour){
+  // usa lo stesso motore della pagina, preso da index.html
+  const eng = html.slice(html.indexOf("/* ---------- metrica italiana"), html.indexOf("/* ---------- fonti dal vivo"));
+  const { buildCorpus, compose, FORMS } = new Function(eng + "; return { buildCorpus, compose, FORMS };")();
+  const MIX_P = +((html.match(/const MIX_P = ([\d.]+)/) || [])[1] || 0.35);
+  const base = buildCorpus(items, fx), mixed = translated.length ? buildCorpus([...items, ...translated], fx) : base;
+  const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
+  const rule = "─".repeat(40);
+  const L = [`POESIA LA NOTIZIA — ${dayIt}`, `Una poesia per ogni forma, composta alle ${hour} con i titoli del giorno`, ""];
+  for (const form of FORMS){
+    const C = Math.random() < MIX_P ? mixed : base;
+    const poem = compose(C, form);
+    L.push(rule, form.name.toUpperCase(), form.note, "");
+    if (poem.title) L.push(poem.title, "");
+    const fonti = [];
+    let n = 0;
+    poem.forEach(l => {
+      if (l.br){ if (L[L.length - 1] !== "") L.push(""); return; }
+      if (l.foreign){
+        n++; L.push(l.text);
+        fonti.push(`${String(n).padStart(3)}  ${l.it.src}, ${l.it.country} (in lingua originale)`);
+        return;
+      }
+      if (!l.parts || !l.parts.length) return;
+      n++; L.push(cap(l.parts.map(p => p.text).join(" ")));
+      fonti.push(`${String(n).padStart(3)}  ` + l.parts.map(p => { const it = C.items[p.hid]; return it.tr ? `${it.src} (tradotto)` : it.src; }).join(" · "));
+    });
+    if (L[L.length - 1] !== "") L.push("");
+    L.push("Fonti dei versi", ...fonti, "");
+  }
+  return L.join("\n");
 }
