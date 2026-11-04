@@ -103,6 +103,29 @@ main{ padding-top:clamp(2.2rem,7vw,4.5rem); }
   .about summary{ min-height:44px; display:inline-flex; align-items:center; }
 }
 @media (hover:none){ .f{ cursor:pointer; } }
+/* ---------- stampa: nero su bianco, una pagina pulita ---------- */
+#printout{ display:none; }
+@media print{
+  @page{ size:A4; margin:22mm 24mm 20mm; }
+  html, body{ background:#fff !important; color:#000 !important; }
+  .wrap{ display:none !important; }
+  #printout{ display:block; font-family:"EB Garamond", Garamond, Georgia, serif; color:#000; }
+  #printout .ph{ font-size:9pt; letter-spacing:.18em; margin:0 0 14mm; }
+  #printout .pt{ font-style:italic; font-size:17pt; margin:0 0 7mm; }
+  #printout .pv{ font-size:13pt; line-height:1.45; max-width:125mm; }
+  #printout .ps{ margin:0 0 4.5mm; break-inside:avoid; }
+  #printout .l{ display:flex; gap:3mm; }
+  #printout .l .n{ width:6mm; text-align:right; font-size:8pt; color:#555; padding-top:1.2mm; flex:none; }
+  #printout .l .t{ flex:1; padding-left:5mm; text-indent:-5mm; }
+  #printout .l .r{ width:5mm; font-style:italic; font-size:10pt; color:#555; flex:none; }
+  #printout .l.x .t{ font-style:italic; font-size:11pt; color:#444; }
+  #printout .l sup{ font-size:6.5pt; color:#777; margin-left:.4mm; }
+  #printout .col{ margin-top:12mm; padding-top:4mm; border-top:.3pt solid #000; font-size:9pt; line-height:1.45; break-inside:avoid; }
+  #printout .col p{ margin:0 0 2mm; }
+  #printout .fn{ columns:2; column-gap:8mm; font-size:7.5pt; line-height:1.35; color:#333; margin-top:3mm; }
+  #printout .fn div{ break-inside:avoid; }
+}
+
 </style>
 </head>
 <body>
@@ -123,6 +146,7 @@ main{ padding-top:clamp(2.2rem,7vw,4.5rem); }
   <div class="actions">
     <button class="link" id="copy">Copia testo</button>
     <button class="link" id="img">Copia immagine</button>
+    <button class="link" id="print">Stampa</button>
   </div>
   <div class="prov" id="prov"></div>
 </main>
@@ -137,6 +161,7 @@ main{ padding-top:clamp(2.2rem,7vw,4.5rem); }
   <p>Un progetto di Jacopo Natoli</p>
 </details>
 </div>
+<article id="printout" aria-hidden="true"></article>
 <script>
 const SNAPSHOT_DATE = "6 ottobre 2026";
 const RS = "Prime pagine del 6 ottobre";
@@ -864,7 +889,8 @@ function foreignLine(l, i){
 
 function render(){
   const form = currentForm();
-  current = compose(Math.random() < MIX_P ? corpus : corpusBase, form);
+  const usedC = Math.random() < MIX_P ? corpus : corpusBase;
+  current = compose(usedC, form); current.corpus = usedC;
   $("pscheme").textContent = form.note;
   $("ptitle").textContent = current.title || "";
   clearProv();
@@ -974,6 +1000,51 @@ $("img").addEventListener("click", async () => {
       flash(btn, "Immagine salvata", "Copia immagine");
     }
   } catch (e) { flash(btn, "Immagine non riuscita", "Copia immagine"); }
+});
+
+
+/* ---------- stampa ---------- */
+function buildPrint(){
+  const metric = $("metric").checked, form = currentForm(), now = new Date();
+  const C = current.corpus || corpus;
+  const el = $("printout"); el.innerHTML = "";
+  const add = (tag, cls, txt, parent = el) => { const e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; parent.appendChild(e); return e; };
+  add("p", "ph", "POESIA LA NOTIZIA");
+  if (current.title) add("p", "pt", current.title);
+  const body = add("div", "pv");
+  let st = add("div", "ps", null, body), n = 0;
+  const notes = [], srcs = new Set();
+  current.forEach(l => {
+    if (l.br){ st = add("div", "ps", null, body); return; }
+    const row = add("div", "l" + (l.foreign ? " x" : ""), null, st);
+    add("span", "n", metric && !l.foreign ? (l.metric || "") : "", row);
+    const t = add("span", "t", null, row);
+    n++;
+    if (l.foreign){
+      t.textContent = l.text; t.lang = l.it.lang;
+      notes.push(`${n}. ${l.it.src === "stampa estera" ? "Stampa estera" : l.it.src}, ${l.it.country}, in lingua originale: «${l.it.text}»`);
+      srcs.add(l.it.country);
+    } else {
+      t.textContent = lineText(l);
+      const fs = l.parts.map(p => C.items[p.hid]).filter(Boolean);
+      fs.forEach(it => srcs.add(it.tr ? it.src + " (tradotto)" : it.src));
+      notes.push(`${n}. ` + fs.map(it => it.tr ? `${it.src}, tradotto: «${it.orig}»` : `${it.src}: «${it.text}»`).join(" / "));
+    }
+    add("span", "r", metric ? (l.foreign ? "∗" : (l.label || "")) : "", row);
+  });
+  [...body.querySelectorAll(".ps")].forEach(s => { if (!s.children.length) s.remove(); });
+  const col = add("div", "col");
+  const quando = now.toLocaleDateString("it-IT", { day: "numeric", month: "long", year: "numeric" }) + ", ore " + now.toLocaleTimeString("it-IT", { hour: "2-digit", minute: "2-digit" });
+  add("p", null, `${form.name} (${form.note}). Composta con i titoli dei giornali del ${corpusDate} e stampata il ${quando}.`, col);
+  add("p", null, `Esemplare unico: la macchina non ricompone mai due volte la stessa poesia. Versi tratti da ${srcs.size} fonti; per ogni verso, in nota, il titolo da cui proviene.`, col);
+  add("p", null, "Jacopo Natoli, Poesia la notizia", col);
+  const fn = add("div", "fn", null, col);
+  notes.forEach(x => add("div", null, x, fn));
+}
+$("print").addEventListener("click", () => {
+  if (!current.length) return;
+  buildPrint();
+  try { window.print(); } catch (e) { flash($("print"), "Stampa non disponibile qui", "Stampa"); }
 });
 
 $("go").addEventListener("click", render);
