@@ -35,6 +35,13 @@ h1{ margin:0 0 1.4rem; font-weight:400; font-size:clamp(1.9rem,6vw,3.4rem); lett
 .btn{ font:inherit; font-size:1.1rem; color:var(--bg); background:var(--ink); border:0; border-radius:2px; padding:.35rem 1.1rem .4rem; cursor:pointer; }
 .btn:active{ transform:translateY(1px); }
 .toggles{ display:flex; gap:.7rem 1.2rem; }
+.mic{ font:inherit; font-size:1.1rem; color:var(--ink); background:none; border:1px solid var(--ink); border-radius:2px; padding:.3rem .9rem .35rem; cursor:pointer; display:inline-flex; align-items:center; gap:.45rem; }
+.mic::before{ content:""; width:.55rem; height:.55rem; border-radius:50%; background:var(--soft); }
+.mic.on{ border-color:var(--red); color:var(--red); }
+.mic.on::before{ background:var(--red); animation:blink 1s infinite; }
+@keyframes blink{ 50%{ opacity:.2; } }
+.heard{ min-height:1.4em; margin:.7rem 0 0; color:var(--soft); font-style:italic; }
+.heard:empty{ display:none; }
 .toggle{ display:inline-flex; align-items:center; gap:.4rem; color:var(--soft); cursor:pointer; user-select:none; }
 .toggle input{ accent-color:var(--red); width:1rem; height:1rem; margin:0; }
 .link{ font:inherit; color:var(--ink); background:none; border:0; padding:.2rem 0; cursor:pointer; text-decoration:underline; text-decoration-color:var(--soft); text-underline-offset:4px; }
@@ -134,11 +141,13 @@ main{ padding-top:clamp(2.2rem,7vw,4.5rem); }
 <div class="controls">
   <label class="select" aria-label="Forma poetica"><select id="form"></select></label>
   <button class="btn" id="go">Componi</button>
+  <button class="mic" id="mic" hidden>Parla</button>
   <div class="toggles">
     <label class="toggle"><input type="checkbox" id="metric"> metrica</label>
     <label class="toggle"><input type="checkbox" id="auto"> automatico</label>
   </div>
 </div>
+<p class="heard" id="heard"></p>
 <main>
   <p class="scheme" id="pscheme"></p>
   <p class="ptitle" id="ptitle"></p>
@@ -155,7 +164,8 @@ main{ padding-top:clamp(2.2rem,7vw,4.5rem); }
   <p>Poesia la notizia prende i titoli dei quotidiani italiani della giornata e li rimonta dentro le forme chiuse della tradizione: sonetto, canzone, ballata, sestina, ottava. Un programma conta le sillabe, cerca le rime e taglia i titoli dove il metro lo chiede. A volte un verso è quasi un titolo intero, a volte è l'innesto di due notizie che non si erano mai incontrate.</p>
   <p>Ogni volta che premi Componi nasce una poesia diversa, che non verrà ripetuta. La cronaca, fatta per durare un giorno, entra in misure pensate per durare secoli.</p>
   <p>Anche la stampa estera entra nei versi, tradotta in italiano. Molto di rado affiora invece un titolo nella sua lingua originale, lasciato fuori dal metro: un inserto, come un ritaglio incollato sulla pagina.</p>
-  <p class="meta">Il conteggio metrico è automatico e approssimato. Passando sopra un frammento si vede il titolo da cui proviene.</p>
+  <p>Con il tasto Parla anche la voce di chi guarda entra nella poesia: le frasi dette al microfono vengono trascritte, tagliate e misurate come i titoli, e montate tra le notizie.</p>
+  <p class="meta">Il conteggio metrico è automatico e approssimato. Passando sopra un frammento si vede il titolo da cui proviene. La voce viene trascritta dal servizio di riconoscimento del browser (Google o Apple) e non viene salvata: resta solo finché la pagina è aperta.</p>
   <p class="meta" id="status"><span class="dot"></span>Caricamento delle notizie</p>
   <p class="meta" id="sources"></p>
   <p>Un progetto di Jacopo Natoli</p>
@@ -838,10 +848,15 @@ const SNAP_TR = SNAPSHOT_FOREIGN.map(([country, lang, text, it]) => ({ src: `Sta
 // due corpora: solo italiani, e italiani + esteri tradotti (usato in circa una poesia su tre)
 const MIX_P = 0.35;
 let corpus, corpusBase;
-function setCorpus(it, tr, fx){ corpusBase = buildCorpus(it, fx); corpus = tr.length ? buildCorpus([...it, ...tr], fx) : corpusBase; }
+let baseIt = [], baseTr = [], baseFx = [], voice = [];
+function setCorpus(it, tr, fx){
+  baseIt = it; baseTr = tr; baseFx = fx;
+  const all = [...it, ...voice];                       // la voce sta dopo i titoli italiani: stessi indici nei due corpora
+  corpusBase = buildCorpus(all, fx); corpus = tr.length ? buildCorpus([...all, ...tr], fx) : corpusBase;
+}
 setCorpus(SNAP_IT, SNAP_TR, SNAP_FX);
 let corpusDate = SNAPSHOT_DATE, live = false, timer = null, current = [];
-const sourceNames = items => [...new Set(items.filter(i => !i.tr).map(i => i.src))];
+const sourceNames = items => [...new Set(items.filter(i => !i.tr && !i.voice).map(i => i.src))];
 const currentForm = () => FORMS.find(f => f.id === $("form").value) || FORMS[0];
 
 FORMS.forEach(f => { const o = document.createElement("option"); o.value = f.id; o.textContent = f.name; $("form").appendChild(o); });
@@ -849,7 +864,7 @@ $("form").value = "sonetto";
 try { const saved = localStorage.getItem("pdg-form"); if (saved && FORMS.some(f => f.id === saved)) $("form").value = saved; } catch (e) {}
 
 function setStatus(extra){
-  const n = corpus.items.filter(i => !i.tr).length, names = sourceNames(corpus.items);
+  const n = corpus.items.filter(i => !i.tr && !i.voice).length, names = sourceNames(corpus.items);
   const fx = corpus.foreign || [], countries = new Set(fx.map(f => f.country));
   const ntr = corpus.items.filter(i => i.tr).length;
   const when = extra || (live ? `aggiornati oggi alle ${new Date().toLocaleTimeString("it-IT", { hour: "2-digit", minute: "2-digit" })}` : corpusDate);
@@ -907,8 +922,8 @@ function render(){
       const f = document.createElement("span"); f.className = "f"; f.tabIndex = 0;
       let txt = p.text; if (k === 0) txt = txt.charAt(0).toUpperCase() + txt.slice(1);
       f.textContent = txt;
-      const it = corpus.items[p.hid];
-      bindProv(f, it.tr ? it.src + " (tradotto)" : it.src, it.tr ? `${it.text}. Originale: ${it.orig}` : it.text);
+      const it = current.corpus.items[p.hid];
+      bindProv(f, it.tr ? it.src + " (tradotto)" : it.src, it.tr ? `${it.text}. Originale: ${it.orig}` : it.voice ? it.orig : it.text);
       t.appendChild(f);
     });
     const r = document.createElement("span"); r.className = "r"; r.textContent = l.label || "";
@@ -1046,6 +1061,63 @@ $("print").addEventListener("click", () => {
   buildPrint();
   try { window.print(); } catch (e) { flash($("print"), "Stampa non disponibile qui", "Stampa"); }
 });
+
+
+/* ---------- voce: le frasi dette al microfono entrano nella poesia ---------- */
+const VOICE_W = 5;   // peso della voce: appena detta, compare quasi sempre
+// troncamento poetico (cuore → cuor, andare → andar, sono → son): dà alla voce più misure possibili
+const NO_TRUNC = new Set(["come", "dove", "anche", "bene", "male", "mare", "solo", "sole", "pane", "cane", "rane", "sene"]);
+function troncata(s){
+  return s.split(" ").map(w => {
+    const l = w.toLowerCase();
+    if (l.length >= 4 && !NO_TRUNC.has(l) && /[aeiou][lnr]e$|[aeiou]no$/.test(l) && !/[lnr]{2}[eo]$/.test(l) && Math.random() < .6) return w.slice(0, -1);
+    return w;
+  }).join(" ");
+}
+function addVoice(text){
+  text = text.replace(/\s+/g, " ").trim();
+  if (text.split(" ").length < 2) return;
+  const ora = new Date().toLocaleTimeString("it-IT", { hour: "2-digit", minute: "2-digit" });
+  const src = `Voce, ore ${ora}`;
+  const forms = new Set([text, troncata(text), troncata(text)]);
+  voice.forEach(v => v.w = 1.5);                       // le frasi più vecchie restano, ma pesano meno
+  forms.forEach(t => voice.push({ src, text: t, orig: text, w: VOICE_W, voice: true }));
+  if (voice.length > 120) voice = voice.slice(-120);
+  setCorpus(baseIt, baseTr, baseFx); setStatus();
+  // ricompone finché la nuova frase entra nei versi (al massimo 12 tentativi)
+  for (let k = 0; k < 12; k++){
+    render();
+    const used = current.some(l => l.parts && l.parts.some(p => { const it = current.corpus.items[p.hid]; return it && it.voice && it.orig === text; }));
+    if (used) break;
+  }
+}
+const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+if (SR){
+  const mic = $("mic"); mic.hidden = false;
+  let rec = null, wanted = false;
+  const start = () => {
+    rec = new SR(); rec.lang = "it-IT"; rec.continuous = true; rec.interimResults = true;
+    rec.onresult = ev => {
+      let interim = "";
+      for (let i = ev.resultIndex; i < ev.results.length; i++){
+        const r = ev.results[i];
+        if (r.isFinal){ $("heard").textContent = "«" + r[0].transcript.trim() + "»"; addVoice(r[0].transcript); }
+        else interim += r[0].transcript;
+      }
+      if (interim) $("heard").textContent = interim + "…";
+    };
+    rec.onerror = ev => {
+      if (ev.error === "not-allowed" || ev.error === "service-not-allowed"){ wanted = false; $("heard").textContent = "Il microfono non è autorizzato: consentilo nelle impostazioni del browser."; }
+    };
+    rec.onend = () => { if (wanted){ try { rec.start(); } catch (e) {} } else { mic.classList.remove("on"); mic.textContent = "Parla"; } };
+    rec.start();
+  };
+  mic.addEventListener("click", () => {
+    wanted = !wanted;
+    if (wanted){ mic.classList.add("on"); mic.textContent = "In ascolto"; $("heard").textContent = "Parla pure…"; try { start(); } catch (e) { wanted = false; mic.classList.remove("on"); mic.textContent = "Parla"; } }
+    else { try { rec && rec.stop(); } catch (e) {} mic.classList.remove("on"); mic.textContent = "Parla"; }
+  });
+}
 
 $("go").addEventListener("click", render);
 $("form").addEventListener("change", () => { try { localStorage.setItem("pdg-form", $("form").value); } catch (e) {} render(); });
